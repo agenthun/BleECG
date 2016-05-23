@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="recyclerview-animators-0.3.0-SNAPSHOT">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.recyclerview/recyclerview-animators/0.3.0-SNAPSHOT/res" />
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.recyclerview/recyclerview-animators/0.3.0-SNAPSHOT/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.gabrielemariotti.recyclerview/recyclerview-animators/0.3.0-SNAPSHOT/9a6b9558ebc2e1fce7f574745fb5494499ccf47c/recyclerview-animators-0.3.0-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

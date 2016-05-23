@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:drawable="@drawable/ic_signal_wifi_0_bar_black_24dp"
+        android:maxLevel="100"
+        android:minLevel="81" />
+    <item
+        android:drawable="@drawable/ic_signal_wifi_1_bar_black_24dp"
+        android:maxLevel="80"
+        android:minLevel="61" />
+    <item
+        android:drawable="@drawable/ic_signal_wifi_2_bar_black_24dp"
+        android:maxLevel="60"
+        android:minLevel="41" />
+    <item
+        android:drawable="@drawable/ic_signal_wifi_3_bar_black_24dp"
+        android:maxLevel="40"
+        android:minLevel="21" />
+    <item
+        android:drawable="@drawable/ic_signal_wifi_4_bar_black_24dp"
+        android:maxLevel="20"
+        android:minLevel="0" />
+
+</level-list>

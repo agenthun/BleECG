@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">心电</string>
+
+    <string name="navigation_drawer_open">打开导航抽屉</string>
+    <string name="navigation_drawer_close">关闭导航抽屉</string>
+
+    <string name="action_settings">设置</string>
+
+    <string name="prompt_account">用户名</string>
+    <string name="prompt_password">密码</string>
+    <string name="action_sign_in">登录</string>
+    <string name="action_forget_password">无法登录?</string>
+    <string name="action_sign_up">注册</string>
+    <string name="error_invalid_account">请输入用户名</string>
+    <string name="error_invalid_password">请输入密码</string>
+    <string name="error_invalid_null">该用户尚未注册!</string>
+
+    <string name="page_title_scan_device">扫描设备</string>
+    <string name="page_title_send_sms">发送短信</string>
+
+    <string name="text_hint_send_sms_content">请输入短信内容</string>
+    <string name="text_container_no">"箱号 "</string>
+    <string name="menu_clear">关闭</string>
+    <string name="menu_toggle_icon">触发</string>
+    <string name="menu_icon_type">种类</string>
+
+    <string name="action_type_0">已开箱</string>
+    <string name="action_type_1">已关箱</string>
+    <string name="action_type_2">非法拆封</string>
+    <string name="action_type_3">已上封(绿色)</string>
+    <string name="action_type_4">海关查验</string>
+
+    <string name="error_ble_not_supported">该设备不支持蓝牙功能</string>
+    <string name="device_connecting">正在连接中...</string>
+    <string name="success_device_connection">连接成功</string>
+    <string name="fail_device_connection">连接失败</string>
+    <string name="time_out_device_connection">连接超时</string>
+    <string name="success_device_send_data">发送成功</string>
+    <string name="fail_device_send_data">发送失败</string>
+    <string name="device_reply_query_title">设备状态信息</string>
+    <string name="device_reply_extra_query_title">设备状态信息</string>
+    <string name="device_alarm_title">警告</string>
+    <string name="device_reply_query_period">上传周期</string>
+    <string name="device_reply_safe_0">未上封</string>
+    <string name="device_reply_safe_1">已上封</string>
+    <string name="device_reply_safe_2">已拆封</string>
+    <string name="device_reply_lock">关闭</string>
+    <string name="device_reply_unlock">打开</string>
+    <string name="device_reply_info_title">设备位置信息</string>
+    <string name="device_reply_info_time_error">时间未知</string>
+    <string name="text_ok">确认</string>
+
+    <string name="card_title_setting">配置</string>
+    <string name="card_title_lock">上封</string>
+    <string name="card_title_unlock">解封</string>
+    <string name="card_title_query_status">状态查询</string>
+    <string name="card_title_query_info">位置查询</string>
+
+    <string name="text_hint_current_heart_rate">当前心率</string>
+
+</resources>
