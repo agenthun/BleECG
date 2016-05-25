@@ -2,179 +2,179 @@
 <items version="2" >
 
     <item
+        jar="/Users/agenthun/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.0.0-beta4/de5935a367ba5e343e9df786ac8fc0c7d52b5f0c/converter-gson-2.0.0-beta4.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="de5935a367ba5e343e9df786ac8fc0c7d52b5f0c">
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/converter-gson-2.0.0-beta4_888bbd5dddcb855b6827108dd05056ac1ce40996.jar" />
+    </item>
+    <item
         jar="/Users/agenthun/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.0.0-beta4/739e00dea1f0ac04fdb9b6160d667e23cc50a791/retrofit-2.0.0-beta4.jar"
         jumboMode="true"
         revision="23.0.2"
         sha1="739e00dea1f0ac04fdb9b6160d667e23cc50a791">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/retrofit-2.0.0-beta4_bca5e457af747c5c3b2593c304d1e40cfa005913/classes.dex" />
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/retrofit-2.0.0-beta4_bca5e457af747c5c3b2593c304d1e40cfa005913.jar" />
+    </item>
+    <item
+        jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="59d1bdb3d53266828423bec3431b9f20af3c5201">
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/instant-run_c1f2b6fcf84a1e99a293bd3371804f8d7a174528.jar" />
     </item>
     <item
         jar="/Users/agenthun/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.1.1/b494968f6050d494de55dc3ce005e59c7eb40012/rxjava-1.1.1.jar"
         jumboMode="true"
         revision="23.0.2"
         sha1="b494968f6050d494de55dc3ce005e59c7eb40012">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/rxjava-1.1.1_16004476ac65015f89d72696d17fa7b82ff95e2e/classes.dex" />
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/rxjava-1.1.1_16004476ac65015f89d72696d17fa7b82ff95e2e.jar" />
     </item>
     <item
         jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.3.0/jars/libs/internal_impl-23.3.0.jar"
         jumboMode="true"
         revision="23.0.2"
         sha1="4da5a4d697d32497c6f85567a5112e62fdfd0676">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-23.3.0_c4040f4c3c37c020858c735d700c3cf49a97368b/classes.dex" />
-    </item>
-    <item
-        jar="/Users/agenthun/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.2.0/f7873a2ebde246a45c2a8d6f3247108b4c88a879/okhttp-3.2.0.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="f7873a2ebde246a45c2a8d6f3247108b4c88a879">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/okhttp-3.2.0_4d653d8f7ffeebe9d622a72759c623b8eb62323d/classes.dex" />
-    </item>
-    <item
-        jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-23.3.0_c258d31d607b2aede58862b2912d42028435dd02/classes.dex" />
-    </item>
-    <item
-        jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.recyclerview/recyclerview-animators/0.3.0-SNAPSHOT/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="940a4e6d5d64deee58c07673cb65a4557e1637af">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.github.gabrielemariotti.recyclerview-recyclerview-animators-0.3.0-SNAPSHOT_ba2f3e00ca94b349ce675465bd93b51697d9b196/classes.dex" />
-    </item>
-    <item
-        jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.1.0/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="d96886efea7cc74fbb3abd0e3b51d5638fc57be0">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-cardview-v7-23.1.0_aa6114f1c9fa7d2ff5af6ad3a4a1947884a4c44d/classes.dex" />
-    </item>
-    <item
-        jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.3.0/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-23.3.0_58d07fcfdee07e1a49d8a685bcffb1e5cbd5a13b/classes.dex" />
-    </item>
-    <item
-        jar="/Users/agenthun/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/7.0.1/d5d13ea991eab0252e3710e5df3d6a9d4b21d461/butterknife-7.0.1.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/butterknife-7.0.1_5149811619c37668e64e6db236a15bf9ac56b3af/classes.dex" />
-    </item>
-    <item
-        jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/exploded-aar/com.github.arimorty/floatingsearchview/1.1.2/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="7aeef59b6b3360abc1283c06eaf98ce10fe087b4">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.github.arimorty-floatingsearchview-1.1.2_5e8a8bee3561c22e270b48743581c634f8849f1e/classes.dex" />
-    </item>
-    <item
-        jar="/Users/agenthun/Android/android-sdk-macosx/extras/android/m2repository/com/android/support/support-annotations/23.3.0/support-annotations-23.3.0.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-23.3.0_f89cc56c4e8d7110af843f2254947a879a1c2280/classes.dex" />
-    </item>
-    <item
-        jar="/Users/agenthun/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/converter-gson/2.0.0-beta4/de5935a367ba5e343e9df786ac8fc0c7d52b5f0c/converter-gson-2.0.0-beta4.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="de5935a367ba5e343e9df786ac8fc0c7d52b5f0c">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/converter-gson-2.0.0-beta4_888bbd5dddcb855b6827108dd05056ac1ce40996/classes.dex" />
-    </item>
-    <item
-        jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="bc2bbea4a2a4d3cc5f7441b4119fd9b54715d215">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_c1f2b6fcf84a1e99a293bd3371804f8d7a174528/classes.dex" />
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/internal_impl-23.3.0_c4040f4c3c37c020858c735d700c3cf49a97368b.jar" />
     </item>
     <item
         jar="/Users/agenthun/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.6.2/f1bc476cc167b18e66c297df599b2377131a8947/gson-2.6.2.jar"
         jumboMode="true"
         revision="23.0.2"
         sha1="f1bc476cc167b18e66c297df599b2377131a8947">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/gson-2.6.2_0075b9370aa5a92fb8ed985b898f382f64b7be5c/classes.dex" />
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/gson-2.6.2_0075b9370aa5a92fb8ed985b898f382f64b7be5c.jar" />
     </item>
     <item
         jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/exploded-aar/com.android.support/design/23.3.0/jars/classes.jar"
         jumboMode="true"
         revision="23.0.2"
         sha1="f0001e71cea6ae432a00021c6f727f5ef0f3d27e">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-23.3.0_41ed527e1361f5947d4bdc1fd1f388dbe55c8933/classes.dex" />
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/com.android.support-design-23.3.0_41ed527e1361f5947d4bdc1fd1f388dbe55c8933.jar" />
+    </item>
+    <item
+        jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.3.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="82ce13fd19cdfde0e392f03c27edeba8d4333648">
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-23.3.0_3a6dbdf5e9fc7ce1275269e4c9534515456043db.jar" />
     </item>
     <item
         jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.3.0/jars/classes.jar"
         jumboMode="true"
         revision="23.0.2"
         sha1="debf30ce0a7560396b6235edef77e447006454c2">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-23.3.0_ec8f3033de6869fb9f3fa29cba022b8f4c4455bc/classes.dex" />
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-23.3.0_ec8f3033de6869fb9f3fa29cba022b8f4c4455bc.jar" />
+    </item>
+    <item
+        jar="/Users/agenthun/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.2.0/f7873a2ebde246a45c2a8d6f3247108b4c88a879/okhttp-3.2.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="f7873a2ebde246a45c2a8d6f3247108b4c88a879">
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/okhttp-3.2.0_4d653d8f7ffeebe9d622a72759c623b8eb62323d.jar" />
     </item>
     <item
         jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/exploded-aar/me.grantland/autofittextview/0.2.0/jars/classes.jar"
         jumboMode="true"
         revision="23.0.2"
         sha1="81db45283d36bfc6e3380c325fb09b2283f36775">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/me.grantland-autofittextview-0.2.0_5ba77f445d476827779e33ff66c46776f2509391/classes.dex" />
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/me.grantland-autofittextview-0.2.0_5ba77f445d476827779e33ff66c46776f2509391.jar" />
     </item>
     <item
         jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/exploded-aar/com.txusballesteros/snake/1.2.0/jars/classes.jar"
         jumboMode="true"
         revision="23.0.2"
         sha1="69de8732a36e3141d991debcc7f871877205074d">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.txusballesteros-snake-1.2.0_4a0d7afe7de7c370129ac64d31eb7394548c497f/classes.dex" />
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/com.txusballesteros-snake-1.2.0_4a0d7afe7de7c370129ac64d31eb7394548c497f.jar" />
+    </item>
+    <item
+        jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.3.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.3.0_c258d31d607b2aede58862b2912d42028435dd02.jar" />
+    </item>
+    <item
+        jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/exploded-aar/com.github.gabrielemariotti.recyclerview/recyclerview-animators/0.3.0-SNAPSHOT/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="940a4e6d5d64deee58c07673cb65a4557e1637af">
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/com.github.gabrielemariotti.recyclerview-recyclerview-animators-0.3.0-SNAPSHOT_ba2f3e00ca94b349ce675465bd93b51697d9b196.jar" />
     </item>
     <item
         jar="/Users/agenthun/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.6.0/98476622f10715998eacf9240d6b479f12c66143/okio-1.6.0.jar"
         jumboMode="true"
         revision="23.0.2"
         sha1="98476622f10715998eacf9240d6b479f12c66143">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/okio-1.6.0_b66f35fcf3560df145c2a6b1890353d90ce7ca99/classes.dex" />
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/okio-1.6.0_b66f35fcf3560df145c2a6b1890353d90ce7ca99.jar" />
     </item>
     <item
         jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/exploded-aar/io.reactivex/rxandroid/1.1.0/jars/classes.jar"
         jumboMode="true"
         revision="23.0.2"
         sha1="d4c4b83de2f6412072d2a29b1b7a5b03edaad5ff">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/io.reactivex-rxandroid-1.1.0_aa3a15d42094b1918090bb3c6e26a62f61a2a5af/classes.dex" />
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/io.reactivex-rxandroid-1.1.0_aa3a15d42094b1918090bb3c6e26a62f61a2a5af.jar" />
     </item>
     <item
         jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.3.0/jars/classes.jar"
         jumboMode="true"
         revision="23.0.2"
         sha1="8a034dd16c0dfd75fe86c52c2cd581592acc684a">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-23.3.0_7a4483d9cbb3276cffa07607c0baac6f5417032c/classes.dex" />
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.3.0_7a4483d9cbb3276cffa07607c0baac6f5417032c.jar" />
     </item>
     <item
         jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.3.0/jars/classes.jar"
         jumboMode="true"
         revision="23.0.2"
         sha1="a0b5d60246cd9d4f3f2443611b3b4c25265840b5">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-23.3.0_9e564eacc665d29685a4d1e712e02d44c5b867ed/classes.dex" />
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-23.3.0_9e564eacc665d29685a4d1e712e02d44c5b867ed.jar" />
     </item>
     <item
         jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         revision="23.0.2"
-        sha1="737e56ac82b1a56c584f5d97bd18815ab05582ef">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_cbd21034602b5c28541f823c291c41d76630bf92/classes.dex" />
+        sha1="b3893c2f9ccac03b6138abd3404849ccf733734a">
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_cbd21034602b5c28541f823c291c41d76630bf92.jar" />
+    </item>
+    <item
+        jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.3.0/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="23be6993826b8fd88bbc8d14928bb3b8960d3d4e">
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-23.3.0_58d07fcfdee07e1a49d8a685bcffb1e5cbd5a13b.jar" />
+    </item>
+    <item
+        jar="/Users/agenthun/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/7.0.1/d5d13ea991eab0252e3710e5df3d6a9d4b21d461/butterknife-7.0.1.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="d5d13ea991eab0252e3710e5df3d6a9d4b21d461">
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/butterknife-7.0.1_5149811619c37668e64e6db236a15bf9ac56b3af.jar" />
     </item>
     <item
         jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/exploded-aar/com.bartoszlipinski/viewpropertyobjectanimator/1.2.0/jars/classes.jar"
         jumboMode="true"
         revision="23.0.2"
         sha1="1828dd75d357690efb2c5f4326804e2f7ad21f6c">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.bartoszlipinski-viewpropertyobjectanimator-1.2.0_833a870da4e6bd829931b1771b334c1281f6e067/classes.dex" />
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/com.bartoszlipinski-viewpropertyobjectanimator-1.2.0_833a870da4e6bd829931b1771b334c1281f6e067.jar" />
     </item>
     <item
         jar="/Users/agenthun/.gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.8.3/65fd012581ded67bc20945d85c32b4598c3a9cf1/jsoup-1.8.3.jar"
         jumboMode="true"
         revision="23.0.2"
         sha1="65fd012581ded67bc20945d85c32b4598c3a9cf1">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/transforms/dex/debug/folders/1000/10/jsoup-1.8.3_db53e4aec7eb55ad648d1baf0a5e2130e931c704/classes.dex" />
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/jsoup-1.8.3_db53e4aec7eb55ad648d1baf0a5e2130e931c704.jar" />
+    </item>
+    <item
+        jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/exploded-aar/com.github.arimorty/floatingsearchview/1.1.2/jars/classes.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="7aeef59b6b3360abc1283c06eaf98ce10fe087b4">
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/com.github.arimorty-floatingsearchview-1.1.2_5e8a8bee3561c22e270b48743581c634f8849f1e.jar" />
+    </item>
+    <item
+        jar="/Users/agenthun/Android/android-sdk-macosx/extras/android/m2repository/com/android/support/support-annotations/23.3.0/support-annotations-23.3.0.jar"
+        jumboMode="true"
+        revision="23.0.2"
+        sha1="db7791d75a07fef9844d06236c1c59ba7bf6997c">
+        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/support-annotations-23.3.0_f89cc56c4e8d7110af843f2254947a879a1c2280.jar" />
     </item>
 
 </items>

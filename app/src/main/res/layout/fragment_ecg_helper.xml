@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="false"
+    android:paddingBottom="@dimen/spacing_normal"
+    android:paddingLeft="@dimen/spacing_normal"
+    android:paddingRight="@dimen/spacing_normal"
+    android:paddingTop="@dimen/spacing_normal"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_replay"
+            style="@style/CradView.Light.App"
+            android:layout_width="match_parent"
+            android:layout_height="242dp"
+            app:cardBackgroundColor="@color/serenity_mask">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="48dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/card_setting" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:padding="@dimen/spacing_double"
+                android:text="@string/card_title_replay"
+                android:textAppearance="@style/TextAppearance.Title" />
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_report"
+            style="@style/CradView.Light.App"
+            android:layout_width="match_parent"
+            android:layout_height="242dp"
+            app:cardBackgroundColor="@color/rose_quartz_mask">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="48dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/card_query_status" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:padding="@dimen/spacing_double"
+                android:text="@string/card_title_report"
+                android:textAppearance="@style/TextAppearance.Title" />
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_tips"
+            style="@style/CradView.Light.App"
+            android:layout_width="match_parent"
+            android:layout_height="242dp"
+            app:cardBackgroundColor="@color/teal_mask">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="48dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/card_query_info" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:padding="@dimen/spacing_double"
+                android:text="@string/card_title_tips"
+                android:textAppearance="@style/TextAppearance.Title" />
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

@@ -56,6 +56,8 @@ public class DeviceOperationActivity extends AppCompatActivity {
     @Bind(R.id.snake)
     SnakeView snakeView;
 
+    private boolean isShow = false;
+
     private int id = 0x12345678;
     private int rn = 0xABABABAB;
     private int key = 0x87654321;
@@ -139,6 +141,32 @@ public class DeviceOperationActivity extends AppCompatActivity {
         if (!heartRateQueue.isEmpty()) {
             int heartRate = (heartRateQueue.poll() & 0xff);
             textCurrentHeartRate.setText(Integer.toString(heartRate));
+            if (heartRate >= 100 && isShow == false) {
+                isShow = true;
+                new AlertDialog.Builder(DeviceOperationActivity.this)
+                        .setTitle("心率提示")
+                        .setMessage(R.string.warning_heart_rate_high)
+                        .setPositiveButton(R.string.text_ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+//                                onBackPressed();
+                                isShow = false;
+                            }
+                        }).show();
+            }
+            if (heartRate <= 50 && isShow == false) {
+                isShow = true;
+                new AlertDialog.Builder(DeviceOperationActivity.this)
+                        .setTitle("心率提示")
+                        .setMessage(R.string.warning_heart_rate_low)
+                        .setPositiveButton(R.string.text_ok, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+//                                onBackPressed();
+                                isShow = false;
+                            }
+                        }).show();
+            }
         }
 
         new Handler().postDelayed(new Runnable() {

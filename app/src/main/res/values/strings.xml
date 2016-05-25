@@ -16,7 +16,7 @@
     <string name="error_invalid_null">该用户尚未注册!</string>
 
     <string name="page_title_scan_device">扫描设备</string>
-    <string name="page_title_send_sms">发送短信</string>
+    <string name="page_title_ecg_helper">心博士</string>
 
     <string name="text_hint_send_sms_content">请输入短信内容</string>
     <string name="text_container_no">"箱号 "</string>
@@ -35,6 +35,8 @@
     <string name="success_device_connection">连接成功</string>
     <string name="fail_device_connection">连接失败</string>
     <string name="time_out_device_connection">连接超时</string>
+    <string name="warning_heart_rate_high">当前心率指数过高</string>
+    <string name="warning_heart_rate_low">当前心率指数过低</string>
     <string name="success_device_send_data">发送成功</string>
     <string name="fail_device_send_data">发送失败</string>
     <string name="device_reply_query_title">设备状态信息</string>
@@ -50,11 +52,9 @@
     <string name="device_reply_info_time_error">时间未知</string>
     <string name="text_ok">确认</string>
 
-    <string name="card_title_setting">配置</string>
-    <string name="card_title_lock">上封</string>
-    <string name="card_title_unlock">解封</string>
-    <string name="card_title_query_status">状态查询</string>
-    <string name="card_title_query_info">位置查询</string>
+    <string name="card_title_replay">历史心率回放</string>
+    <string name="card_title_report">心率分析报告</string>
+    <string name="card_title_tips">心率改善Tips</string>
 
     <string name="text_hint_current_heart_rate">当前心率</string>
 

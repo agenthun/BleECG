@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.agenthun.bleecg.App;
 import com.agenthun.bleecg.R;
-import com.agenthun.bleecg.fragment.SendSmsFragment;
+import com.agenthun.bleecg.fragment.ECGHelperFragment;
 import com.agenthun.bleecg.fragment.ScanDeviceFragment;
 
 /**
@@ -29,7 +29,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return ScanDeviceFragment.newInstance("1", "1070");
             case 1:
-                return SendSmsFragment.newInstance("2", "1070");
+                return ECGHelperFragment.newInstance();
 /*            case 2:
                 Fragment freightTrackFragment = FreightTrackFragment.newInstance("0", "1070");
                 ((FreightTrackFragment) freightTrackFragment).setOnItemClickListener(new FreightTrackFragment.OnItemClickListener() {
@@ -49,7 +49,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public int getCount() {
         // Show 3 total pages.
-        return 1;
+        return 2;
     }
 
     @Override
@@ -58,7 +58,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return App.getContext().getString(R.string.page_title_scan_device);
             case 1:
-                return App.getContext().getString(R.string.page_title_send_sms);
+                return App.getContext().getString(R.string.page_title_ecg_helper);
 /*            case 2:
                 return App.getContext().getString(R.string.page_title_freight_track_query);*/
         }
