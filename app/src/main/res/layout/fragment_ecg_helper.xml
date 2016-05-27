@@ -8,9 +8,9 @@
     android:paddingBottom="@dimen/spacing_normal"
     android:paddingLeft="@dimen/spacing_normal"
     android:paddingRight="@dimen/spacing_normal"
-    android:paddingTop="@dimen/spacing_normal"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+    android:paddingTop="@dimen/spacing_normal">
 
+    <!--app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
