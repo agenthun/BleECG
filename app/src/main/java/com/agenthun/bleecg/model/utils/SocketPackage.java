@@ -221,11 +221,11 @@ public class SocketPackage {
                                 } else {
                                     isSigOk = false;
                                 }
-                                Log.d(TAG, "isSigOk: " + isSigOk);
+//                                Log.d(TAG, "isSigOk: " + isSigOk);
 
                                 if (getData[2] == (byte) 0x03) {
                                     heartRate.offer(getData[3]);
-                                    Log.d(TAG, "heartRate: " + getData[3]);
+//                                    Log.d(TAG, "heartRate: " + getData[3]);
                                 }
                             }
                         } else {
@@ -234,7 +234,7 @@ public class SocketPackage {
                                     int hi = ((int) getData[2]) & 0xff;
                                     int lo = ((int) getData[3]) & 0xff;
                                     rawWave.offer((short) ((hi << 8) | lo));
-                                    Log.d(TAG, "rawWaveValue: " + (short) ((hi << 8) | lo));
+//                                    Log.d(TAG, "rawWaveValue: " + (short) ((hi << 8) | lo));
                                 }
                             } else {
 //                                rawWave.offer((short) 0);

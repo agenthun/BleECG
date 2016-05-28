@@ -3,8 +3,11 @@ package com.agenthun.bleecg.activity;
 import android.bluetooth.BluetoothDevice;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AlertDialog;
@@ -19,6 +22,7 @@ import android.view.View;
 import com.agenthun.bleecg.R;
 import com.agenthun.bleecg.connectivity.ble.ACSUtility;
 import com.agenthun.bleecg.model.utils.SocketPackage;
+import com.agenthun.bleecg.utils.ApiLevelHelper;
 import com.txusballesteros.SnakeView;
 
 import java.io.IOException;
@@ -46,6 +50,7 @@ public class DeviceOperationActivity extends AppCompatActivity {
     private boolean isPortOpen = false;
 
     private AppCompatDialog mProgressDialog;
+    private SoundPool soundPool;
 
     @Bind(R.id.nestedScrollView)
     NestedScrollView nestedScrollView;
@@ -73,15 +78,15 @@ public class DeviceOperationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_device_operation);
         ButterKnife.bind(this);
 
-        Bundle bundle = getIntent().getExtras();
+/*        Bundle bundle = getIntent().getExtras();
         BluetoothDevice device = bundle.getParcelable(BluetoothDevice.EXTRA_DEVICE);
-        Log.d(TAG, "onCreate() returned: " + device.getAddress());
+        Log.d(TAG, "onCreate() returned: " + device.getAddress());*/
 
         utility = new ACSUtility(this, callback);
-        mCurrentPort = utility.new blePort(device);
+        //mCurrentPort = utility.new blePort(device);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitle(device.getAddress());
+        //toolbar.setTitle(device.getAddress());
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -91,7 +96,14 @@ public class DeviceOperationActivity extends AppCompatActivity {
             }
         });
 
-        getProgressDialog().show();
+        //getProgressDialog().show();
+        isPortOpen = true;
+
+        if (ApiLevelHelper.isAtLeast(21)) {
+            soundPool = new SoundPool.Builder().setMaxStreams(2).build();
+        } else {
+            soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+        }
     }
 
     @Override
@@ -120,13 +132,13 @@ public class DeviceOperationActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-/*        new Handler().postDelayed(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 inputStream = getResources().openRawResource(R.raw.bmd_101_7min);
                 new MsgThread().start();
             }
-        }, 10000);*/
+        }, 10000);
 
         gen();
     }
@@ -141,7 +153,7 @@ public class DeviceOperationActivity extends AppCompatActivity {
         if (!heartRateQueue.isEmpty()) {
             int heartRate = (heartRateQueue.poll() & 0xff);
             textCurrentHeartRate.setText(Integer.toString(heartRate));
-            if (heartRate >= 100 && isShow == false) {
+/*            if (heartRate >= 100 && isShow == false) {
                 isShow = true;
                 new AlertDialog.Builder(DeviceOperationActivity.this)
                         .setTitle("心率提示")
@@ -153,6 +165,9 @@ public class DeviceOperationActivity extends AppCompatActivity {
                                 isShow = false;
                             }
                         }).show();
+
+                Snackbar.make(nestedScrollView, getString(R.string.warning_heart_rate_high), Snackbar.LENGTH_SHORT)
+                        .setAction("Action", null).show();
             }
             if (heartRate <= 50 && isShow == false) {
                 isShow = true;
@@ -166,6 +181,34 @@ public class DeviceOperationActivity extends AppCompatActivity {
                                 isShow = false;
                             }
                         }).show();
+
+                Snackbar.make(nestedScrollView, getString(R.string.warning_heart_rate_low), Snackbar.LENGTH_SHORT)
+                        .setAction("Action", null).show();
+            }*/
+
+            if (heartRate >= 100 && isShow == false) {
+                isShow = true;
+                Snackbar.make(nestedScrollView, getString(R.string.warning_heart_rate_high), Snackbar.LENGTH_SHORT)
+                        .setAction("Action", null).show();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        isShow = false;
+                    }
+                }, 30000);
+
+
+            }
+            if (heartRate <= 50 && isShow == false) {
+                isShow = true;
+                Snackbar.make(nestedScrollView, getString(R.string.warning_heart_rate_low), Snackbar.LENGTH_SHORT)
+                        .setAction("Action", null).show();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        isShow = false;
+                    }
+                }, 30000);
             }
         }
 
@@ -293,7 +336,7 @@ public class DeviceOperationActivity extends AppCompatActivity {
     }
 
     public void updateWaveView(int data) {
-        Log.d(TAG, "updateWaveView: " + data);
+//        Log.d(TAG, "updateWaveView: " + data);
 
         float point = (float) (data * 2048.0 / 32768.0);
         if (point > 512) point = 512;
@@ -307,8 +350,7 @@ public class DeviceOperationActivity extends AppCompatActivity {
         public void run() {
             final byte[] byteData = new byte[20];
             try {
-                int len;
-                while ((len = inputStream.read(byteData)) != -1) {
+                while (inputStream.read(byteData) != -1) {
                     socketPackageReceived.packageExtraReceive(socketPackageReceived, byteData, rawWaveQueue, heartRateQueue);
                 }
                 inputStream.close();
