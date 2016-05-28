@@ -35,8 +35,10 @@
     <string name="success_device_connection">连接成功</string>
     <string name="fail_device_connection">连接失败</string>
     <string name="time_out_device_connection">连接超时</string>
-    <string name="warning_heart_rate_high">当前心率指数过高</string>
-    <string name="warning_heart_rate_low">当前心率指数过低</string>
+    <string name="warning_heart_rate_ultra_high">您的当前心率过快,健康状况较差</string>
+    <string name="warning_heart_rate_ultra_low">您的当前心率过慢,健康状况较差</string>
+    <string name="warning_heart_rate_high">您的当前心率偏快</string>
+    <string name="warning_heart_rate_low">您的当前心率偏慢</string>
     <string name="success_device_send_data">发送成功</string>
     <string name="fail_device_send_data">发送失败</string>
     <string name="device_reply_query_title">设备状态信息</string>

@@ -7,7 +7,6 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.MediaStore;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AlertDialog;
@@ -18,6 +17,7 @@ import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.agenthun.bleecg.R;
 import com.agenthun.bleecg.connectivity.ble.ACSUtility;
@@ -76,17 +76,18 @@ public class DeviceOperationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_operation);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         ButterKnife.bind(this);
 
-/*        Bundle bundle = getIntent().getExtras();
+        Bundle bundle = getIntent().getExtras();
         BluetoothDevice device = bundle.getParcelable(BluetoothDevice.EXTRA_DEVICE);
-        Log.d(TAG, "onCreate() returned: " + device.getAddress());*/
+        Log.d(TAG, "onCreate() returned: " + device.getAddress());
 
         utility = new ACSUtility(this, callback);
-        //mCurrentPort = utility.new blePort(device);
+        mCurrentPort = utility.new blePort(device);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //toolbar.setTitle(device.getAddress());
+        toolbar.setTitle(device.getAddress());
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -96,13 +97,16 @@ public class DeviceOperationActivity extends AppCompatActivity {
             }
         });
 
-        //getProgressDialog().show();
-        isPortOpen = true;
+        getProgressDialog().show();
 
         if (ApiLevelHelper.isAtLeast(21)) {
             soundPool = new SoundPool.Builder().setMaxStreams(2).build();
+//            soundPool.load(this, R.raw.msg_new, 1);
+            soundPool.load(this, R.raw.msg_weixin, 1);
         } else {
-            soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+            soundPool = new SoundPool(2, AudioManager.STREAM_NOTIFICATION, 0);
+//            soundPool.load(this, R.raw.msg_new, 1);
+            soundPool.load(this, R.raw.msg_weixin, 1);
         }
     }
 
@@ -132,13 +136,13 @@ public class DeviceOperationActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        new Handler().postDelayed(new Runnable() {
+/*        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 inputStream = getResources().openRawResource(R.raw.bmd_101_7min);
                 new MsgThread().start();
             }
-        }, 10000);
+        }, 10000);*/
 
         gen();
     }
@@ -153,62 +157,36 @@ public class DeviceOperationActivity extends AppCompatActivity {
         if (!heartRateQueue.isEmpty()) {
             int heartRate = (heartRateQueue.poll() & 0xff);
             textCurrentHeartRate.setText(Integer.toString(heartRate));
-/*            if (heartRate >= 100 && isShow == false) {
-                isShow = true;
-                new AlertDialog.Builder(DeviceOperationActivity.this)
-                        .setTitle("心率提示")
-                        .setMessage(R.string.warning_heart_rate_high)
-                        .setPositiveButton(R.string.text_ok, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-//                                onBackPressed();
-                                isShow = false;
-                            }
-                        }).show();
 
-                Snackbar.make(nestedScrollView, getString(R.string.warning_heart_rate_high), Snackbar.LENGTH_SHORT)
-                        .setAction("Action", null).show();
-            }
-            if (heartRate <= 50 && isShow == false) {
-                isShow = true;
-                new AlertDialog.Builder(DeviceOperationActivity.this)
-                        .setTitle("心率提示")
-                        .setMessage(R.string.warning_heart_rate_low)
-                        .setPositiveButton(R.string.text_ok, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-//                                onBackPressed();
-                                isShow = false;
-                            }
-                        }).show();
-
-                Snackbar.make(nestedScrollView, getString(R.string.warning_heart_rate_low), Snackbar.LENGTH_SHORT)
-                        .setAction("Action", null).show();
-            }*/
-
-            if (heartRate >= 100 && isShow == false) {
-                isShow = true;
-                Snackbar.make(nestedScrollView, getString(R.string.warning_heart_rate_high), Snackbar.LENGTH_SHORT)
-                        .setAction("Action", null).show();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        isShow = false;
+            //不正常心率提示
+            if (heartRate < 60 || heartRate > 100) {
+                if (!isShow) {
+                    isShow = true;
+                    String msg = getString(R.string.warning_heart_rate_high);
+                    if (heartRate >= 160) {
+                        msg = getString(R.string.warning_heart_rate_ultra_high);
+                    } else if (heartRate > 100 && heartRate < 160) {
+                        msg = getString(R.string.warning_heart_rate_high);
+                    } else if (heartRate > 40 && heartRate < 60) {
+                        msg = getString(R.string.warning_heart_rate_low);
+                    } else {
+                        msg = getString(R.string.warning_heart_rate_ultra_low);
                     }
-                }, 30000);
 
+                    Snackbar snackbar = Snackbar.make(nestedScrollView, msg, Snackbar.LENGTH_SHORT)
+                            .setAction("Action", null);
+                    snackbar.getView().setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                    snackbar.show();
 
-            }
-            if (heartRate <= 50 && isShow == false) {
-                isShow = true;
-                Snackbar.make(nestedScrollView, getString(R.string.warning_heart_rate_low), Snackbar.LENGTH_SHORT)
-                        .setAction("Action", null).show();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        isShow = false;
-                    }
-                }, 30000);
+                    soundPool.play(1, 1, 1, 1, 0, 1);
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            isShow = false;
+                        }
+                    }, 30000);
+                }
             }
         }
 
