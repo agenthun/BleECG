@@ -30,18 +30,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 return ScanDeviceFragment.newInstance("1", "1070");
             case 1:
                 return ECGHelperFragment.newInstance();
-/*            case 2:
-                Fragment freightTrackFragment = FreightTrackFragment.newInstance("0", "1070");
-                ((FreightTrackFragment) freightTrackFragment).setOnItemClickListener(new FreightTrackFragment.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(String containerNo, String containerId) {
-                        Log.d(TAG, "get containerNo: " + containerNo + ", containerId: " + containerId);
-                        if (mOnDataChangeListener != null) {
-                            mOnDataChangeListener.onContainerDataChange(containerNo, containerId);
-                        }
-                    }
-                });
-                return freightTrackFragment;*/
         }
         return null;
     }
@@ -59,13 +47,11 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 return App.getContext().getString(R.string.page_title_scan_device);
             case 1:
                 return App.getContext().getString(R.string.page_title_ecg_helper);
-/*            case 2:
-                return App.getContext().getString(R.string.page_title_freight_track_query);*/
         }
         return null;
     }
 
-    //itemClick interface
+/*    //itemClick interface
     public interface OnDataChangeListener {
         void onContainerDataChange(String containerNo, String containerId);
     }
@@ -74,5 +60,5 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     public void setOnDataChangeListener(OnDataChangeListener mOnDataChangeListener) {
         this.mOnDataChangeListener = mOnDataChangeListener;
-    }
+    }*/
 }

@@ -23,6 +23,8 @@ import com.agenthun.bleecg.R;
 import com.agenthun.bleecg.connectivity.ble.ACSUtility;
 import com.agenthun.bleecg.model.utils.SocketPackage;
 import com.agenthun.bleecg.utils.ApiLevelHelper;
+import com.agenthun.bleecg.view.CheckableFab;
+import com.github.ybq.android.spinkit.SpinKitView;
 import com.txusballesteros.SnakeView;
 
 import java.io.IOException;
@@ -31,6 +33,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import butterknife.Bind;
+import butterknife.BindInt;
 import butterknife.ButterKnife;
 
 /**
@@ -41,7 +44,6 @@ import butterknife.ButterKnife;
 public class DeviceOperationActivity extends AppCompatActivity {
     private static final String TAG = "DeviceOperationActivity";
 
-    private static final int DEVICE_SETTING = 1;
     private static final long TIME_OUT = 30000;
 
     private ACSUtility.blePort mCurrentPort;
@@ -61,16 +63,11 @@ public class DeviceOperationActivity extends AppCompatActivity {
     @Bind(R.id.snake)
     SnakeView snakeView;
 
+    @Bind(R.id.fab)
+    CheckableFab fab;
+
     private boolean isShow = false;
-
-    private int id = 0x12345678;
-    private int rn = 0xABABABAB;
-    private int key = 0x87654321;
-
-    private static final byte extraPackageBegin = 0x02;
-    private static final byte extraPackageDataLength = 0x31;
-    private static final byte extraPackageCommand = 0x40;
-    private static final byte extraPackageTotalLength = 36 + 15;
+    private boolean mRecord = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +95,17 @@ public class DeviceOperationActivity extends AppCompatActivity {
         });
 
         getProgressDialog().show();
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adjustFab(mRecord);
+                mRecord = !mRecord;
+                if (isRecord()) {
+                    Log.d(TAG, "mRecord onClick() returned: ");
+                }
+            }
+        });
 
         if (ApiLevelHelper.isAtLeast(21)) {
             soundPool = new SoundPool.Builder().setMaxStreams(2).build();
@@ -175,7 +183,7 @@ public class DeviceOperationActivity extends AppCompatActivity {
 
                     Snackbar snackbar = Snackbar.make(nestedScrollView, msg, Snackbar.LENGTH_SHORT)
                             .setAction("Action", null);
-                    snackbar.getView().setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                    snackbar.getView().setBackgroundColor(getResources().getColor(R.color.colorAccentDark));
                     snackbar.show();
 
                     soundPool.play(1, 1, 1, 1, 0, 1);
@@ -196,6 +204,35 @@ public class DeviceOperationActivity extends AppCompatActivity {
                 gen();
             }
         }, 1);
+    }
+
+    private void adjustFab(final boolean setting) {
+        fab.setChecked(setting);
+/*        mHideFabRunnable = new Runnable() {
+            @Override
+            public void run() {
+                fab.hide();
+                if (!setting) {
+//                    onBackPressed();
+                }
+            }
+        };
+        mHandler.postDelayed(mHideFabRunnable, 500);*/
+    }
+
+    protected void allowRecord(boolean record) {
+        if (null != fab) {
+            if (record) {
+                fab.show();
+            } else {
+                fab.hide();
+            }
+            mRecord = record;
+        }
+    }
+
+    public boolean isRecord() {
+        return mRecord;
     }
 
     private ACSUtility.IACSUtilityCallback callback = new ACSUtility.IACSUtilityCallback() {
