@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 
 import com.agenthun.bleecg.R;
 import com.agenthun.bleecg.activity.DeviceOperationActivity;
+import com.agenthun.bleecg.activity.MainActivity;
 import com.agenthun.bleecg.adapter.DeviceAdapter;
 import com.agenthun.bleecg.connectivity.ble.ACSUtility;
 
@@ -89,6 +90,33 @@ public class ScanDeviceFragment extends Fragment implements SwipeRefreshLayout.O
         swipeRefreshLayout.setOnRefreshListener(this);
         swipeRefreshLayout.setColorSchemeColors(R.color.colorPrimary, R.color.colorPrimaryDark,
                 R.color.colorAccent, R.color.colorAccentDark);
+
+        swipeRefreshLayout.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(true);
+            }
+        }, 1000);
+        onRefresh();
+
+        ((MainActivity) getActivity()).setOnItemClickListener(new MainActivity.OnFABClickListener() {
+            @Override
+            public void OnFABClickListener(View view) {
+                Log.d(TAG, "OnFABClickListener: ");
+                swipeRefreshLayout.setRefreshing(false);
+                if (utilIsScan) {
+                    utilIsScan = false;
+                    utility.stopEnum();
+                }
+                swipeRefreshLayout.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefreshLayout.setRefreshing(true);
+                    }
+                });
+                onRefresh();
+            }
+        });
 
         deviceList = new ArrayList<>();
 

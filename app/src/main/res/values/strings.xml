@@ -22,9 +22,12 @@
     <string name="fail_device_send_data">发送失败</string>
     <string name="text_ok">确认</string>
 
-    <string name="card_title_replay">历史心率回放</string>
-    <string name="card_title_report">心率分析报告</string>
-    <string name="card_title_tips">心率改善Tips</string>
+    <string name="card_title_replay">历史心率</string>
+    <string name="card_subtitle_replay">回放</string>
+    <string name="card_title_report">心率分析</string>
+    <string name="card_subtitle_report">报告</string>
+    <string name="card_title_tips">心率改善</string>
+    <string name="card_subtitle_tips">Tips</string>
 
     <string name="text_hint_current_heart_rate">当前心率</string>
 

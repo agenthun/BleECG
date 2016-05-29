@@ -23,6 +23,7 @@ import android.view.View;
 
 import com.agenthun.bleecg.R;
 import com.agenthun.bleecg.adapter.SectionsPagerAdapter;
+import com.agenthun.bleecg.fragment.ScanDeviceFragment;
 import com.agenthun.bleecg.utils.ApiLevelHelper;
 
 /**
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onPageSelected(int position) {
                 Log.d(TAG, "onPageSelected() returned: " + position);
-                if (position == 1) {
+                if (position == 0) {
                     fab.setVisibility(View.VISIBLE);
                     ViewCompat.animate(fab).scaleX(1).scaleY(1)
                             .setInterpolator(new LinearOutSlowInInterpolator())
@@ -106,7 +107,10 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+//                Log.d(TAG, "fab onClick: ");
+                if (mOnFABClickListener != null) {
+                    mOnFABClickListener.OnFABClickListener(view);
+                }
             }
         });
 
@@ -118,8 +122,6 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayout);
     }
 
     @Override
@@ -177,5 +179,16 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    //FABClick interface
+    public interface OnFABClickListener {
+        void OnFABClickListener(View view);
+    }
+
+    private OnFABClickListener mOnFABClickListener;
+
+    public void setOnItemClickListener(OnFABClickListener mOnFABClickListener) {
+        this.mOnFABClickListener = mOnFABClickListener;
     }
 }

@@ -28,7 +28,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="48dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/card_setting" />
+                android:src="@drawable/img_goal_3" />
 
             <android.support.v7.widget.AppCompatTextView
                 android:layout_width="match_parent"
@@ -44,14 +44,14 @@
             style="@style/CradView.Light.App"
             android:layout_width="match_parent"
             android:layout_height="242dp"
-            app:cardBackgroundColor="@color/rose_quartz_mask">
+            app:cardBackgroundColor="@color/teal_mask">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="48dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/card_query_status" />
+                android:src="@drawable/img_goal_2" />
 
             <android.support.v7.widget.AppCompatTextView
                 android:layout_width="match_parent"
@@ -67,14 +67,14 @@
             style="@style/CradView.Light.App"
             android:layout_width="match_parent"
             android:layout_height="242dp"
-            app:cardBackgroundColor="@color/teal_mask">
+            app:cardBackgroundColor="@color/rose_quartz_mask">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="48dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/card_query_info" />
+                android:src="@drawable/img_goal_4" />
 
             <android.support.v7.widget.AppCompatTextView
                 android:layout_width="match_parent"
