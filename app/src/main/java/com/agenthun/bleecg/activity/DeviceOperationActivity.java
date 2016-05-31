@@ -116,6 +116,8 @@ public class DeviceOperationActivity extends AppCompatActivity {
 //            soundPool.load(this, R.raw.msg_new, 1);
             soundPool.load(this, R.raw.msg_weixin, 1);
         }
+
+        isPortOpen = false;
     }
 
     @Override
@@ -136,6 +138,12 @@ public class DeviceOperationActivity extends AppCompatActivity {
         }
         startActivity(new Intent(this, MainActivity.class));
         finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        utilEnable = false;
     }
 
     InputStream inputStream = null;
@@ -246,7 +254,8 @@ public class DeviceOperationActivity extends AppCompatActivity {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    if (!isPortOpen) {
+                    Log.d(TAG, "run() returned: isPortOpen" + isPortOpen);
+                    if (!isPortOpen && utilEnable) {
                         getProgressDialog().cancel();
                         new AlertDialog.Builder(DeviceOperationActivity.this)
                                 .setTitle(mCurrentPort._device.getName())
