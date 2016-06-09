@@ -24,7 +24,6 @@ import com.agenthun.bleecg.connectivity.ble.ACSUtility;
 import com.agenthun.bleecg.model.utils.SocketPackage;
 import com.agenthun.bleecg.utils.ApiLevelHelper;
 import com.agenthun.bleecg.view.CheckableFab;
-import com.github.ybq.android.spinkit.SpinKitView;
 import com.txusballesteros.SnakeView;
 
 import java.io.IOException;
@@ -33,7 +32,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import butterknife.Bind;
-import butterknife.BindInt;
 import butterknife.ButterKnife;
 
 /**
