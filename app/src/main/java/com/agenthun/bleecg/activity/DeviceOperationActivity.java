@@ -350,6 +350,7 @@ public class DeviceOperationActivity extends AppCompatActivity {
         mProgressDialog.setCanceledOnTouchOutside(false);
         mProgressDialog.setContentView(R.layout.dialog_device_connecting);
         mProgressDialog.setTitle(getString(R.string.device_connecting));
+        mProgressDialog.setCancelable(false);
         return mProgressDialog;
     }
 
