@@ -23,6 +23,7 @@ import com.agenthun.bleecg.R;
 import com.agenthun.bleecg.connectivity.ble.ACSUtility;
 import com.agenthun.bleecg.model.utils.SocketPackage;
 import com.agenthun.bleecg.utils.ApiLevelHelper;
+import com.agenthun.bleecg.utils.DataLogUtils;
 import com.agenthun.bleecg.view.CheckableFab;
 import com.txusballesteros.SnakeView;
 
@@ -100,7 +101,9 @@ public class DeviceOperationActivity extends AppCompatActivity {
                 adjustFab(mRecord);
                 mRecord = !mRecord;
                 if (isRecord()) {
-                    Log.d(TAG, "mRecord onClick() returned: ");
+                    DataLogUtils.logToFileInit();
+                } else {
+                    DataLogUtils.logToFileFinish();
                 }
             }
         });
@@ -121,6 +124,9 @@ public class DeviceOperationActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        if (isRecord()) {
+            DataLogUtils.logToFileFinish();
+        }
         if (utilEnable) {
             utilEnable = false;
             utility.closePort();
@@ -141,6 +147,9 @@ public class DeviceOperationActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (isRecord()) {
+            DataLogUtils.logToFileFinish();
+        }
         utilEnable = false;
     }
 
@@ -166,12 +175,18 @@ public class DeviceOperationActivity extends AppCompatActivity {
         if (!rawWaveQueue.isEmpty()) {
             data = rawWaveQueue.poll();
             updateWaveView(data);
+            if (isRecord()) {
+                DataLogUtils.logToFile(DataLogUtils.RAW_TYPE, data);
+            }
         }
 
         if (!heartRateQueue.isEmpty()) {
             int heartRate = (heartRateQueue.poll() & 0xff);
             textCurrentHeartRate.setText(Integer.toString(heartRate));
-
+            if (isRecord()) {
+                DataLogUtils.logToFile(DataLogUtils.RATE_TYPE, heartRate);
+            }
+            
             //不正常心率提示
             if (heartRate < 60 || heartRate > 100) {
                 if (!isShow) {

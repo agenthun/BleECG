@@ -10,6 +10,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -19,6 +21,7 @@ import android.support.v4.view.ViewPropertyAnimatorListenerAdapter;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.ViewUtils;
 import android.util.Log;
 import android.util.Property;
@@ -34,6 +37,10 @@ import com.agenthun.bleecg.utils.ApiLevelHelper;
 import com.agenthun.bleecg.utils.DataLogUtils;
 import com.github.ybq.android.spinkit.animation.IntProperty;
 import com.txusballesteros.SnakeView;
+
+import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -52,6 +59,14 @@ public class ECGHelperFragment extends Fragment {
     private Animator mCircularReveal;
     private ObjectAnimator mColorChange;
     private Interpolator mInterpolator;
+
+    private static final int MSG_WHAT_RAW = 0x100;
+    private static final int MSG_WHAT_RATE = 0x101;
+
+    private boolean isReplay = false;
+
+    @Bind(R.id.current_heart_rate)
+    AppCompatTextView textCurrentHeartRate;
 
     @Bind(R.id.snake)
     SnakeView snakeView;
@@ -84,27 +99,36 @@ public class ECGHelperFragment extends Fragment {
         return view;
     }
 
+    int dataIndex = 0;
+
     @OnClick(R.id.replay_page)
     public void onReplayBtnClick() {
         revealFragmentContainer(replayView, replayContainer);
 
-        for (int i = 0; i < 100; i++) {
-            updateWaveView((int) (i + Math.random()));
-        }
-        DataLogUtils.logToFileInit();
-        DataLogUtils.logToFile(DataLogUtils.RATE_TYPE, 10);
-        DataLogUtils.logToFile(DataLogUtils.RATE_TYPE, 20);
-        DataLogUtils.logToFile(DataLogUtils.RATE_TYPE, 30);
-        DataLogUtils.logToFile(DataLogUtils.RAW_TYPE, 134);
-        DataLogUtils.logToFileFinish();
+        byte[] buffer = DataLogUtils.FileToBytes();
+        final String[] dataStr = new String(buffer).split("\n");
+        dataIndex = 0;
+        isReplay = true;
 
-        byte[] replayData = DataLogUtils.FileToBytes();
-        String t = new String(replayData);
-        Log.d(TAG, "onReplayBtnClick:" + t);
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if (isReplay && dataIndex < dataStr.length) {
+                    Message msg = new Message();
+                    String[] tmp = dataStr[dataIndex].split(" ");
+                    msg.what = tmp[0].equals(DataLogUtils.RAW_TYPE) ? MSG_WHAT_RAW : MSG_WHAT_RATE;
+                    msg.arg1 = Integer.parseInt(tmp[1]);
+                    handler.sendMessage(msg);
+
+                    dataIndex++;
+                }
+            }
+        }, 2000, 100);
     }
 
     @OnClick(R.id.closeFab)
     public void onCloseReplayBtnClick() {
+        isReplay = false;
         replayContainer.setVisibility(View.GONE);
         replayView.setVisibility(View.VISIBLE);
         ViewCompat.animate(replayView)
@@ -131,6 +155,23 @@ public class ECGHelperFragment extends Fragment {
     public void onTipsBtnClick() {
         Log.d(TAG, "onTipsBtnClick() returned: ");
     }
+
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case MSG_WHAT_RAW:
+                    Log.d(TAG, "handleMessage: raw = " + msg.arg1);
+                    updateWaveView(msg.arg1);
+                    break;
+                case MSG_WHAT_RATE:
+                    Log.d(TAG, "handleMessage: rate = " + msg.arg1);
+                    int heartRate = (msg.arg1 & 0xff);
+                    textCurrentHeartRate.setText(Integer.toString(heartRate));
+                    break;
+            }
+        }
+    };
 
     public void updateWaveView(int data) {
         float point = (float) (data * 2048.0 / 32768.0);

@@ -97,7 +97,7 @@
 
                     <include
                         layout="@layout/include_hrm_counter"
-                        android:layout_width="120dp"
+                        android:layout_width="200dp"
                         android:layout_height="wrap_content" />
 
                     <com.txusballesteros.SnakeView
@@ -109,7 +109,7 @@
                         android:paddingBottom="16dp"
                         app:chartStyle="stroke"
                         app:maxValue="512"
-                        app:maximumNumberOfValues="512"
+                        app:maximumNumberOfValues="100"
                         app:minValue="-512"
                         app:scaleMode="fixed"
                         app:strokeColor="@color/orange_500"
@@ -120,7 +120,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|end"
-                        android:layout_margin="@dimen/fab_margin"
                         android:src="@drawable/ic_close_black_24dp"
                         android:tint="@color/white"
                         app:backgroundTint="@color/cyan"
