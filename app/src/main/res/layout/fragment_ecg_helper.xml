@@ -109,7 +109,7 @@
                         android:paddingBottom="16dp"
                         app:chartStyle="stroke"
                         app:maxValue="512"
-                        app:maximumNumberOfValues="100"
+                        app:maximumNumberOfValues="400"
                         app:minValue="-512"
                         app:scaleMode="fixed"
                         app:strokeColor="@color/orange_500"

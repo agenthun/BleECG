@@ -13,16 +13,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorListenerAdapter;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
-import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.ViewUtils;
 import android.util.Log;
 import android.util.Property;
 import android.view.LayoutInflater;
@@ -38,7 +35,6 @@ import com.agenthun.bleecg.utils.DataLogUtils;
 import com.github.ybq.android.spinkit.animation.IntProperty;
 import com.txusballesteros.SnakeView;
 
-import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -123,7 +119,7 @@ public class ECGHelperFragment extends Fragment {
                     dataIndex++;
                 }
             }
-        }, 2000, 100);
+        }, 2000, 10);
     }
 
     @OnClick(R.id.closeFab)
@@ -144,6 +140,8 @@ public class ECGHelperFragment extends Fragment {
                     }
                 })
                 .start();
+
+        handler.removeCallbacksAndMessages(null);
     }
 
     @OnClick(R.id.card_report)

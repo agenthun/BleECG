@@ -186,7 +186,7 @@ public class DeviceOperationActivity extends AppCompatActivity {
             if (isRecord()) {
                 DataLogUtils.logToFile(DataLogUtils.RATE_TYPE, heartRate);
             }
-            
+
             //不正常心率提示
             if (heartRate < 60 || heartRate > 100) {
                 if (!isShow) {
