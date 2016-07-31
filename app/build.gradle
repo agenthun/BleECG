@@ -2,8 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
-
+    buildToolsVersion '23.0.3'
     defaultConfig {
         applicationId "com.agenthun.bleecg"
         minSdkVersion 18
@@ -21,6 +20,8 @@ android {
         maven { url 'http://jsoup.org' }
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://jitpack.io" }
+    }
+    productFlavors {
     }
 }
 
