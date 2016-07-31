@@ -11,12 +11,14 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorListenerAdapter;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
+import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.support.v7.widget.ViewUtils;
 import android.util.Log;
 import android.util.Property;
@@ -84,11 +86,10 @@ public class ECGHelperFragment extends Fragment {
 
     @OnClick(R.id.replay_page)
     public void onReplayBtnClick() {
-
         revealFragmentContainer(replayView, replayContainer);
 
         for (int i = 0; i < 100; i++) {
-            updateWaveView((int) (i * 1000 + Math.random()));
+            updateWaveView((int) (i + Math.random()));
         }
         DataLogUtils.logToFileInit();
         DataLogUtils.logToFile(DataLogUtils.RATE_TYPE, 10);
@@ -100,6 +101,25 @@ public class ECGHelperFragment extends Fragment {
         byte[] replayData = DataLogUtils.FileToBytes();
         String t = new String(replayData);
         Log.d(TAG, "onReplayBtnClick:" + t);
+    }
+
+    @OnClick(R.id.closeFab)
+    public void onCloseReplayBtnClick() {
+        replayContainer.setVisibility(View.GONE);
+        replayView.setVisibility(View.VISIBLE);
+        ViewCompat.animate(replayView)
+                .scaleX(1)
+                .scaleY(1)
+                .alpha(1)
+                .setInterpolator(mInterpolator)
+                .setListener(new ViewPropertyAnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(View view) {
+                        replayView.setVisibility(View.VISIBLE);
+                        replayContainer.setVisibility(View.GONE);
+                    }
+                })
+                .start();
     }
 
     @OnClick(R.id.card_report)
@@ -127,7 +147,20 @@ public class ECGHelperFragment extends Fragment {
             fragmentContainer.setVisibility(View.VISIBLE);
             clickedView.setVisibility(View.GONE);
 //            mIcon.setVisibility(View.GONE);
+/*            ViewCompat.animate(fab).scaleX(1).scaleY(1)
+                    .setInterpolator(new LinearOutSlowInInterpolator())
+                    .setListener(new ViewPropertyAnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(View view) {
+                            if ((ApiLevelHelper.isAtLeast(Build.VERSION_CODES.JELLY_BEAN_MR1))) {
+                                return;
+                            }
+                            fab.setVisibility(View.VISIBLE);
+                        }
+                    })
+                    .start();*/
         }
+
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)

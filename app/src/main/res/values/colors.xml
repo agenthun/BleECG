@@ -26,5 +26,9 @@
     <color name="green_mask">#ADD57E</color>
     <color name="teal_mask">#B3DFDC</color>
 
+    <color name="blue_grey_100">#CFD8DC</color>
+    <color name="blue_grey_300">#90A4AE</color>
     <color name="blue_grey">#4E6675</color>
+    <color name="cyan">#37B0BE</color>
+
 </resources>

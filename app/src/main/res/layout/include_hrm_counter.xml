@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_horizontal"
+    android:gravity="center"
     android:orientation="horizontal"
     android:paddingBottom="20dp"
     android:paddingTop="@dimen/spacing_normal">
@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:text="60"
         android:textColor="@android:color/secondary_text_light"
-        android:textSize="60sp" />
+        android:textSize="50sp" />
 
     <Space
         android:layout_width="8dp"
