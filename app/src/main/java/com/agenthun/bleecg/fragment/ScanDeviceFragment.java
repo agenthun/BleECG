@@ -24,6 +24,7 @@ import com.agenthun.bleecg.activity.DeviceOperationActivity;
 import com.agenthun.bleecg.activity.MainActivity;
 import com.agenthun.bleecg.adapter.DeviceAdapter;
 import com.agenthun.bleecg.connectivity.ble.ACSUtility;
+import com.agenthun.bleecg.view.CheckEmptyRecyclerView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,7 +50,8 @@ public class ScanDeviceFragment extends Fragment implements SwipeRefreshLayout.O
     private String mContainerNo;
 
     private SwipeRefreshLayout swipeRefreshLayout;
-    private RecyclerView recyclerView;
+    private View noDevices;
+    private CheckEmptyRecyclerView recyclerView;
     private DeviceAdapter deviceAdapter;
 
     private BluetoothAdapter mBluetoothAdapter;
@@ -114,9 +116,11 @@ public class ScanDeviceFragment extends Fragment implements SwipeRefreshLayout.O
             }
         });
 
+        noDevices = view.findViewById(R.id.noDevices);
+
         deviceList = new ArrayList<>();
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        recyclerView = (CheckEmptyRecyclerView) view.findViewById(R.id.recyclerView);
         deviceAdapter = new DeviceAdapter(deviceList, deviceRssiValues);
         deviceAdapter.setOnItemClickListener(new DeviceAdapter.OnItemClickListener() {
             @Override
@@ -148,6 +152,7 @@ public class ScanDeviceFragment extends Fragment implements SwipeRefreshLayout.O
         recyclerView.setAdapter(deviceAdapter);
         recyclerView.setItemAnimator(new SlideScaleInOutRightItemAnimator(recyclerView));
 
+        recyclerView.setEmptyView(noDevices);
         return view;
     }
 
@@ -163,6 +168,14 @@ public class ScanDeviceFragment extends Fragment implements SwipeRefreshLayout.O
 
     @Override
     public void onRefresh() {
+        swipeRefreshLayout.setRefreshing(false);
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(true);
+            }
+        });
+
         if (mBluetoothAdapter != null && mBluetoothAdapter.isEnabled()) {
             scanDevice();
         } else {

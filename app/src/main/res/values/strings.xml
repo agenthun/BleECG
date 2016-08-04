@@ -9,6 +9,9 @@
     <string name="page_title_scan_device">扫描设备</string>
     <string name="page_title_ecg_helper">心博士</string>
 
+    <string name="no_devices_all">未发现设备</string>
+    <string name="scan_device_active">请下拉刷新扫描设备</string>
+
     <string name="error_ble_not_supported">该设备不支持蓝牙功能</string>
     <string name="device_connecting">正在连接中...</string>
     <string name="success_device_connection">连接成功</string>
