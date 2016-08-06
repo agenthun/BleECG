@@ -6,6 +6,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import com.agenthun.bleecg.R;
@@ -36,6 +37,13 @@ public class TipsActivity extends AppCompatActivity {
         });
 
         WebView webView = (WebView) findViewById(R.id.webView);
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setDomStorageEnabled(true);
+        webSettings.setAppCacheMaxSize(1024 * 1024 * 2);
+        webSettings.setAppCachePath(this.getApplicationContext().getDir("cache", MODE_PRIVATE).getPath());
+        webSettings.setAllowFileAccess(true);
+        webSettings.setAppCacheEnabled(true);
+        webSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
         webView.loadUrl("file:///android_asset/index.html");
     }
 
