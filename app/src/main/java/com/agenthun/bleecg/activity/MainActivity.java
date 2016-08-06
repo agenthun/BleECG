@@ -2,7 +2,6 @@ package com.agenthun.bleecg.activity;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -23,7 +22,6 @@ import android.view.View;
 
 import com.agenthun.bleecg.R;
 import com.agenthun.bleecg.adapter.SectionsPagerAdapter;
-import com.agenthun.bleecg.fragment.ScanDeviceFragment;
 import com.agenthun.bleecg.utils.ApiLevelHelper;
 
 /**

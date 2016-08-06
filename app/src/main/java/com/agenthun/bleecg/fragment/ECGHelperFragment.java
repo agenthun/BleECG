@@ -6,6 +6,7 @@ import android.animation.AnimatorSet;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
@@ -30,6 +31,7 @@ import android.view.animation.Interpolator;
 import android.widget.FrameLayout;
 
 import com.agenthun.bleecg.R;
+import com.agenthun.bleecg.activity.TipsActivity;
 import com.agenthun.bleecg.utils.ApiLevelHelper;
 import com.agenthun.bleecg.utils.DataLogUtils;
 import com.github.ybq.android.spinkit.animation.IntProperty;
@@ -151,7 +153,8 @@ public class ECGHelperFragment extends Fragment {
 
     @OnClick(R.id.card_tips)
     public void onTipsBtnClick() {
-        Log.d(TAG, "onTipsBtnClick() returned: ");
+        Intent intent = new Intent(getContext(), TipsActivity.class);
+        startActivity(intent);
     }
 
     private Handler handler = new Handler() {

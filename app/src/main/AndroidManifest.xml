@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
@@ -17,15 +16,14 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name="com.agenthun.bleecg.App"
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_app"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
-            android:name="com.agenthun.bleecg.activity.MainActivity"
+            android:name=".activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -34,15 +32,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.agenthun.bleecg.activity.DeviceOperationActivity"
+            android:name=".activity.DeviceOperationActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <service
-            android:name="com.agenthun.bleecg.connectivity.ble.ACSUtilityService"
-            android:enabled="true"></service>
+            android:name=".connectivity.ble.ACSUtilityService"
+            android:enabled="true" />
+
+        <activity
+            android:name=".activity.TipsActivity"
+            android:label="@string/title_activity_tips"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
