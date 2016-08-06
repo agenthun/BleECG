@@ -6,9 +6,9 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.webkit.WebView;
 
 import com.agenthun.bleecg.R;
-import com.github.ksoichiro.android.observablescrollview.ObservableWebView;
 
 public class TipsActivity extends AppCompatActivity {
 
@@ -35,7 +35,7 @@ public class TipsActivity extends AppCompatActivity {
             }
         });
 
-        ObservableWebView webView = (ObservableWebView) findViewById(R.id.webView);
+        WebView webView = (WebView) findViewById(R.id.webView);
         webView.loadUrl("file:///android_asset/index.html");
     }
 

@@ -37,7 +37,7 @@
             android:textSize="16sp" />
     </FrameLayout>
 
-    <com.github.ksoichiro.android.observablescrollview.ObservableWebView
+    <WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,17 +46,6 @@
         android:clickable="true"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:scrollbars="none">
+        android:scrollbars="none" />
 
-    </com.github.ksoichiro.android.observablescrollview.ObservableWebView>
-    <!--    <android.support.v7.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/spacing_double"
-            android:layout_marginRight="@dimen/spacing_double"
-            android:layout_marginTop="19dp"
-            android:background="@color/white"
-            android:paddingBottom="@dimen/spacing_double"
-            android:scrollbars="none"
-            android:text="@string/large_text" />-->
 </LinearLayout>

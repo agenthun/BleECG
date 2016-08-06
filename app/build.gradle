@@ -36,5 +36,4 @@ dependencies {
     compile 'com.github.gabrielemariotti.recyclerview:recyclerview-animators:0.3.0-SNAPSHOT@aar'
     compile 'com.txusballesteros:snake:1.2.0'
     compile 'com.github.ybq:Android-SpinKit:1.0.4'
-    compile 'com.github.ksoichiro:android-observablescrollview:1.6.0'
 }
