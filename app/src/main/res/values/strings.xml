@@ -34,5 +34,6 @@
 
     <string name="text_hint_current_heart_rate">当前心率</string>
     <string name="title_activity_tips">健康小贴士</string>
+    <string name="title_activity_report">心率分析报告</string>
 
 </resources>

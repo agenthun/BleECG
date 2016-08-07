@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="false"
+        android:paddingBottom="@dimen/spacing_double"
+        android:paddingLeft="@dimen/spacing_double"
+        android:paddingRight="@dimen/spacing_double"
+        android:paddingTop="@dimen/spacing_double"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/goal_activity_trends_period_chart_layout"
+                android:layout_width="match_parent"
+                android:layout_height="256dp">
+
+                <!--                <FrameLayout
+                                    android:id="@+id/goal_activity_trends_period_spinner_layout"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="45dp"
+                                    android:background="@drawable/goal_activity_ripple_spinner_bg"
+                                    android:clickable="true"
+                                    android:focusable="true"
+                                    android:nextFocusDown="@id/goal_activity_trends_period_chart_layout"
+                                    android:paddingEnd="8dp"
+                                    android:paddingStart="16dp"
+                                    android:paddingTop="7dp"
+                                    android:soundEffectsEnabled="false">
+
+                                    <Spinner
+                                        android:id="@+id/goal_activity_trends_period_spinner"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="37dp"
+                                        android:layout_gravity="start|center|top"
+                                        android:background="@drawable/home_profile_spinner_background"
+                                        android:paddingBottom="6dp"
+                                        android:paddingTop="6dp" />
+                                </FrameLayout>-->
+                <com.agenthun.bleecg.view.HistogramView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <FrameLayout
+                    android:id="@+id/goal_activity_trends_arrow_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="@color/gray_50">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_gravity="bottom"
+                        android:background="@color/gray_200" />
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:src="@drawable/common_chart_handler_info_indicator01" />
+                </FrameLayout>
+            </FrameLayout>
+
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>

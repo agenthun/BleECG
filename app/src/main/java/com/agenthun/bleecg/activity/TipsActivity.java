@@ -26,8 +26,6 @@ public class TipsActivity extends AppCompatActivity {
         toolbar.setTitle("");
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
         setSupportActionBar(toolbar);
-
-
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,7 +41,7 @@ public class TipsActivity extends AppCompatActivity {
         webSettings.setAppCachePath(this.getApplicationContext().getDir("cache", MODE_PRIVATE).getPath());
         webSettings.setAllowFileAccess(true);
         webSettings.setAppCacheEnabled(true);
-        webSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
+        webSettings.setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         webView.loadUrl("file:///android_asset/index.html");
     }
 
