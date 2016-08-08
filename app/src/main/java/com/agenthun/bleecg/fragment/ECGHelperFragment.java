@@ -20,7 +20,6 @@ import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorListenerAdapter;
 import android.support.v4.view.animation.FastOutLinearInInterpolator;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
-import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
 import android.util.Property;
 import android.view.LayoutInflater;
@@ -35,7 +34,7 @@ import com.agenthun.bleecg.activity.ReportActivity;
 import com.agenthun.bleecg.activity.TipsActivity;
 import com.agenthun.bleecg.utils.ApiLevelHelper;
 import com.agenthun.bleecg.utils.DataLogUtils;
-import com.github.ybq.android.spinkit.animation.IntProperty;
+import com.agenthun.bleecg.view.HeartRateTextView;
 import com.txusballesteros.SnakeView;
 
 import java.util.Timer;
@@ -65,7 +64,7 @@ public class ECGHelperFragment extends Fragment {
     private boolean isReplay = false;
 
     @Bind(R.id.current_heart_rate)
-    AppCompatTextView textCurrentHeartRate;
+    HeartRateTextView textCurrentHeartRate;
 
     @Bind(R.id.snake)
     SnakeView snakeView;
@@ -277,4 +276,19 @@ public class ECGHelperFragment extends Fragment {
                     }
                 }
             };
+
+    public static abstract class IntProperty<T> extends Property<T, Integer> {
+
+        public IntProperty(String name) {
+            super(Integer.class, name);
+        }
+
+        public abstract void setValue(T object, int value);
+
+        @Override
+        final public void set(T object, Integer value) {
+            //noinspection UnnecessaryUnboxing
+            setValue(object, value.intValue());
+        }
+    }
 }

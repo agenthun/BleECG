@@ -5,7 +5,7 @@
         jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="dda42666ba9621d0becb13abbae703a46d8d9085">
+        sha1="3b3353d73afadf865759e1a71118b3dc41631939">
         <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/instant-run_c1f2b6fcf84a1e99a293bd3371804f8d7a174528.jar" />
     </item>
     <item
@@ -61,7 +61,7 @@
         jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         revision="23.0.3"
-        sha1="d86a91e8827752953cc78bedff1ae4ec712336ae">
+        sha1="2ad53cdaa41fb06869dbe2a293dbcad56c47435b">
         <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_cbd21034602b5c28541f823c291c41d76630bf92.jar" />
     </item>
     <item
@@ -77,13 +77,6 @@
         revision="23.0.3"
         sha1="1b8e03daaa43fb0a4cd57e378167c2fd70454c1e">
         <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.3.0_c258d31d607b2aede58862b2912d42028435dd02.jar" />
-    </item>
-    <item
-        jar="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/exploded-aar/com.github.ybq/Android-SpinKit/1.0.4/jars/classes.jar"
-        jumboMode="true"
-        revision="23.0.3"
-        sha1="876128c14268a173e9f1be29ed9ee637575f7e91">
-        <dex dex="/Users/agenthun/Documents/AndroidStudioSave/BleECG/app/build/intermediates/pre-dexed/debug/com.github.ybq-Android-SpinKit-1.0.4_ce6640bf0d5d6d709243a53d83f11dc5d318dc1c.jar" />
     </item>
     <item
         jar="/Users/agenthun/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/7.0.1/d5d13ea991eab0252e3710e5df3d6a9d4b21d461/butterknife-7.0.1.jar"

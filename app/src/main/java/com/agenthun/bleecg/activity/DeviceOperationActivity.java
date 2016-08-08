@@ -13,7 +13,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.app.AppCompatDialog;
-import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +24,7 @@ import com.agenthun.bleecg.model.utils.SocketPackage;
 import com.agenthun.bleecg.utils.ApiLevelHelper;
 import com.agenthun.bleecg.utils.DataLogUtils;
 import com.agenthun.bleecg.view.CheckableFab;
+import com.agenthun.bleecg.view.HeartRateTextView;
 import com.txusballesteros.SnakeView;
 
 import java.io.IOException;
@@ -57,7 +57,7 @@ public class DeviceOperationActivity extends AppCompatActivity {
     NestedScrollView nestedScrollView;
 
     @Bind(R.id.current_heart_rate)
-    AppCompatTextView textCurrentHeartRate;
+    HeartRateTextView textCurrentHeartRate;
 
     @Bind(R.id.snake)
     SnakeView snakeView;

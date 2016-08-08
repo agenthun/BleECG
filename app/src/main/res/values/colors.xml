@@ -16,6 +16,12 @@
     <color name="gray_50">#fafafa</color>
     <color name="gray_100">#f5f5f5</color>
     <color name="gray_200">#eeeeee</color>
+    <color name="gray_300">#E0E0E0</color>
+
+    <color name="gray_a_50">#40fafafa</color>
+    <color name="gray_a_100">#40f5f5f5</color>
+    <color name="gray_a_200">#40eeeeee</color>
+    <color name="gray_a_300">#60E0E0E0</color>
 
     <color name="orange_500">#ff9800</color>
     <color name="red_500">#e51c23</color>
