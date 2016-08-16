@@ -1,9 +1,11 @@
 package com.agenthun.bleecg.view;
 
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
+import android.graphics.PointF;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.support.v4.content.ContextCompat;
@@ -11,8 +13,13 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
+import android.widget.Scroller;
 
 import com.agenthun.bleecg.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @project BleECG
@@ -31,13 +38,15 @@ public class HistogramView extends View {
     private int offset = 0;
 
     private int mDataLength = 20;
-    float[] currentHeight;
+    List<Float> dataSet = new ArrayList<>();
 
     private Paint mPaint;
 
     private LinearGradient mLinearGradient;
 
     private Context mContext;
+
+    private Scroller scroller;
 
     public HistogramView(Context context) {
         super(context);
@@ -57,14 +66,25 @@ public class HistogramView extends View {
     private void initView(Context context) {
         mContext = context;
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        scroller = new Scroller(context);
+
+        mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
     }
 
     private void initData() {
-        currentHeight = new float[mDataLength];
         for (int i = 0; i < mDataLength; i++) {
-            currentHeight[i] = (i + 1.0f) / (mDataLength * 2) * mRectHeight;
+            dataSet.add((i + 1.0f) / (mDataLength * 2) * mRectHeight);
         }
     }
+
+//    @Override
+//    public void computeScroll() {
+//        super.computeScroll();
+//        if (scroller.computeScrollOffset()) {
+//            ((View) getParent()).scrollTo(scroller.getCurrX(), scroller.getCurrY());
+//            invalidate();
+//        }
+//    }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -81,7 +101,7 @@ public class HistogramView extends View {
 
             rectF = new RectF(
                     index - mRectHalfWidth,
-                    currentHeight[(i + offset) % mDataLength],
+                    dataSet.get((i + offset) % mDataLength),
                     index + mRectHalfWidth,
                     mRectHeight * 0.9f);
 
@@ -115,84 +135,63 @@ public class HistogramView extends View {
         initData();
     }
 
-    private int mLastX;
-    private int mStart;
-    private int mEnd;
+    private float mLastX;
+    private boolean isMoving;
+    private int mTouchSlop;
+    private float mSliding = 0;
+    private int mSelected = -1;
 
-//    private float velocityX = 0;
-//    private float velocityY = 0;
-//    private float frictionX = 1;
-//    private float frictionY = 1;
-//    private float mFrictionForceX = 10;
-//    private float mFrictionForceY = 10;
-//
-//    private float mLastX = Integer.MAX_VALUE;
-//    private float mLastY = Integer.MAX_VALUE;
-//    private float downX;
-//    private float downY;
+    private float ratio = 1;
+    private long animateTime = 1600;
+    private ValueAnimator mAnimator;
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        int x = (int) event.getX();
-//        float y = event.getY();
-/*        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                mLastX = x;
-                mLastY = y;
-                downX = x;
-                downY = y;
-                break;
-            case MotionEvent.ACTION_MOVE:
-                velocityX = (mLastX - x);
-                velocityY = (mLastY - y);
+        if (dataSet.size() > 0) {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    mLastX = event.getX();
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    if (ratio == 1) {
+                        float moveX = event.getX();
+                        mSliding = moveX - mLastX;
+                        if (Math.abs(mSliding) > mTouchSlop) {
+                            isMoving = true;
+                            mLastX = moveX;
 
-                mLastX = x;
-                mLastY = y;
-                break;
-            case MotionEvent.ACTION_UP:
-                if (Math.abs(downX-x)<mTouchSlop && Math.abs(downY-y)<mTouchSlop)
-                break;
-        }*/
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
-                mLastX = x;
-                mStart = getScrollX();
-                Log.d(TAG, "onTouchEvent() returned: ACTION_DOWN");
-                break;
-            case MotionEvent.ACTION_MOVE:
-                int dx = mLastX - x;
-                Log.d(TAG, "onTouchEvent() returned: getScrollX() = " + getScrollX());
-                if (getScrollX() < 0) {
-                    dx = mRectHalfWidth;
-                }
-                if (getScrollX() > mRectSpace * mRectCount) {
-                    dx = -mRectSpace * mRectCount;
-                }
-                scrollBy(dx, 0);
-                offset = getScrollX() / mRectSpace + 1;
-                mLastX = x;
-                Log.d(TAG, "onTouchEvent() returned: ACTION_MOVE dx= " + dx);
-                break;
-            case MotionEvent.ACTION_UP:
-                mEnd = getScrollX();
-                int dScrollX = mEnd - mStart;
-                if (dScrollX > 0) {
-                    if (dScrollX < mRectSpace / 2) {
-                        Log.d(TAG, "onTouchEvent: 0 < dScrollX < mRectSpace/2, " + dScrollX);
-                    } else {
-                        Log.d(TAG, "onTouchEvent: dScrollX > mRectSpace/2, " + dScrollX);
+                            for (int i = 0; i < dataSet.size(); i++) {
+
+                            }
+                            invalidate();
+                        }
                     }
-                } else {
-                    if (-dScrollX < mRectSpace / 2) {
-                        Log.d(TAG, "onTouchEvent: -mRectSpace/2 < dScrollX < 0, " + dScrollX);
-                    } else {
-                        Log.d(TAG, "onTouchEvent: dScrollX < -mRectSpace/2, " + dScrollX);
+                    break;
+                case MotionEvent.ACTION_UP:
+                    if (!isMoving) {
+                        PointF pointF = new PointF(event.getX(), event.getY());
+                        mSelected = clickWhere(pointF);
+                        invalidate();
                     }
-                }
-                Log.d(TAG, "onTouchEvent() returned: ACTION_UP");
-                break;
+                    isMoving = false;
+                    mSliding = 0;
+                    Log.d(TAG, "onTouchEvent() returned: ACTION_UP");
+                    break;
+            }
         }
-        postInvalidate();
         return true;
+    }
+
+    private int clickWhere(PointF pointF) {
+        for (int i = 0; i < dataSet.size(); i++) {
+
+        }
+        return 0;
+    }
+
+    class RoundHistogram {
+        private float mWidth;
+        private float mHeight;
+        private PointF mStart = new PointF(); //起始位置
     }
 }

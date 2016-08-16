@@ -7,6 +7,8 @@ import android.graphics.RadialGradient;
 import android.graphics.Shader;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
+import android.view.View;
+import android.widget.Scroller;
 import android.widget.TextView;
 
 import com.agenthun.bleecg.R;
@@ -30,6 +32,7 @@ public class HeartRateTextView extends TextView {
     private RadialGradient mRadialGradient;
 
     private Context mContext;
+
 
     public HeartRateTextView(Context context) {
         this(context, null);
