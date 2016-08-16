@@ -99,16 +99,20 @@ public class ECGHelperFragment extends Fragment {
 
     int dataIndex = 0;
 
+    private Timer timer = new Timer();
+
     @OnClick(R.id.replay_page)
     public void onReplayBtnClick() {
         revealFragmentContainer(replayView, replayContainer);
+        clearWaveView();
+        textCurrentHeartRate.setText("60");
 
         byte[] buffer = DataLogUtils.FileToBytes();
         final String[] dataStr = new String(buffer).split("\n");
         dataIndex = 0;
         isReplay = true;
 
-        new Timer().schedule(new TimerTask() {
+        timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 if (isReplay && dataIndex < dataStr.length) {
@@ -121,7 +125,7 @@ public class ECGHelperFragment extends Fragment {
                     dataIndex++;
                 }
             }
-        }, 2000, 10);
+        }, 1500, 10);
     }
 
     @OnClick(R.id.closeFab)
@@ -144,6 +148,8 @@ public class ECGHelperFragment extends Fragment {
                 .start();
 
         handler.removeCallbacksAndMessages(null);
+        timer.cancel();
+        timer = new Timer();
     }
 
     @OnClick(R.id.card_report)
@@ -160,7 +166,7 @@ public class ECGHelperFragment extends Fragment {
 
     private Handler handler = new Handler() {
         @Override
-        public void handleMessage(Message msg) {
+        public void handleMessage(final Message msg) {
             switch (msg.what) {
                 case MSG_WHAT_RAW:
                     Log.d(TAG, "handleMessage: raw = " + msg.arg1);
@@ -181,6 +187,10 @@ public class ECGHelperFragment extends Fragment {
         if (point < -512) point = -512;
         snakeView.addValue(point);
         Log.d(TAG, "float point: " + point);
+    }
+
+    public void clearWaveView() {
+        snakeView.clear();
     }
 
     private void revealFragmentContainer(View clickedView, FrameLayout fragmentContainer) {
