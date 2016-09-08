@@ -27,13 +27,12 @@ import java.util.List;
  * @authors agenthun
  * @date 16/8/7 01:43.
  */
-public class HistogramView extends View {
+public class HistogramViewX extends View {
     private static final String TAG = "HistogramView";
 
     private int mWidth;
     private int mRectSpace;
     private int mRectHeight;
-    private int mMaxDataValue = Integer.MIN_VALUE;
     private int mRectWidth;
     private int mRectHalfWidth;
     private int mRectCount = 9;
@@ -41,6 +40,7 @@ public class HistogramView extends View {
 
     private int mDataLength = 20;
     List<RoundHistogram> dataSet = new ArrayList<>();
+    String[] dataStr = null;
 
     private Paint mPaint;
 
@@ -49,19 +49,33 @@ public class HistogramView extends View {
     private Context mContext;
 
     private Scroller scroller;
-    String[] dataStr;
 
-    public HistogramView(Context context) {
+    private int mMaxDataValue = Integer.MIN_VALUE;
+    private int[] value = {
+            93,
+            90,
+            89,
+            86,
+            91,
+            70,
+            88,
+            91,
+            90,
+            89,
+            87
+    };
+
+    public HistogramViewX(Context context) {
         super(context);
         initView(context);
     }
 
-    public HistogramView(Context context, AttributeSet attrs) {
+    public HistogramViewX(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView(context);
     }
 
-    public HistogramView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public HistogramViewX(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView(context);
     }
@@ -73,33 +87,32 @@ public class HistogramView extends View {
 
         mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();
 
-        byte[] buffer = DataLogUtils.FileToBytes();
-        dataStr = new String(buffer).split("\n");
-    }
+//        byte[] buffer = DataLogUtils.FileToBytes();
+//        dataStr = new String(buffer).split("\n");
 
-
-    private void initData() {
-        for (int i = 0; i < dataStr.length; i++) {
-            String[] tmp = dataStr[i].split(" ");
-
-            RoundHistogram roundHistogram;
-            if (tmp[0].equals(DataLogUtils.RATE_TYPE)) {
-                roundHistogram = new RoundHistogram();
-                PointF pointF = roundHistogram.getStart();
-                pointF.x = mRectSpace * i;
-                roundHistogram.setStart(pointF);
-                roundHistogram.setSpace(mRectSpace);
-                roundHistogram.setWidth(mRectWidth);
-//                roundHistogram.setHeight((i + 1.0f) / (mDataLength * 2) * mRectHeight);
-                roundHistogram.setHeight(Integer.parseInt(tmp[1]));
-                dataSet.add(roundHistogram);
-
-                if (mMaxDataValue < Integer.parseInt(tmp[1])) {
-                    mMaxDataValue = Integer.parseInt(tmp[1]);
-                }
+        float avg = 0;
+        for (int i = 0; i < value.length; i++) {
+            avg += value[i];
+            if (value[i] > mMaxDataValue) {
+                mMaxDataValue = value[i];
             }
         }
-        Log.d(TAG, "initData: " + dataSet.size());
+        avg /= value.length;
+    }
+
+    private void initData() {
+
+        for (int i = 0; i < value.length; i++) {
+            RoundHistogram roundHistogram = new RoundHistogram();
+            PointF pointF = roundHistogram.getStart();
+            pointF.x = mRectSpace * i;
+            roundHistogram.setStart(pointF);
+            roundHistogram.setSpace(mRectSpace);
+            roundHistogram.setWidth(mRectWidth);
+            roundHistogram.setHeight((1 - value[i] * 1.0f / mMaxDataValue) * mRectHeight);
+//            roundHistogram.setHeight((i + 1.0f) / (mDataLength * 2) * mRectHeight);
+            dataSet.add(roundHistogram);
+        }
     }
 
 //    @Override
@@ -124,13 +137,11 @@ public class HistogramView extends View {
         for (int i = 0; i < dataSet.size(); i++) {
             RoundHistogram roundHistogram = dataSet.get(i);
 
-            float top = (roundHistogram.getHeight() / mMaxDataValue) * mRectHeight;
-            float bottom = mRectHeight * 0.9f;
             rectF = new RectF(
-                    roundHistogram.getStart().x - mRectHalfWidth,
-                    top,
-                    roundHistogram.getStart().x + mRectHalfWidth,
-                    bottom);
+                    roundHistogram.getStart().x,
+                    roundHistogram.getHeight(),
+                    roundHistogram.getStart().x + roundHistogram.getWidth(),
+                    mRectHeight * 0.9f);
 
             canvas.drawRoundRect(
                     rectF,
@@ -172,61 +183,47 @@ public class HistogramView extends View {
     private long animateTime = 1600;
     private ValueAnimator mAnimator;
 
-//    @Override
-//    public boolean onTouchEvent(MotionEvent event) {
-//        if (dataSet.size() > 0) {
-//            switch (event.getAction()) {
-//                case MotionEvent.ACTION_DOWN:
-//                    mLastX = event.getX();
-//                    break;
-//                case MotionEvent.ACTION_MOVE:
-//                    if (ratio == 1) {
-//                        float moveX = event.getX();
-//                        mSliding = moveX - mLastX;
-//                        if (Math.abs(mSliding) > mTouchSlop) {
-//                            isMoving = true;
-//                            mLastX = moveX;
-//                            if (dataSet.get(0).getStart().x + mSliding > mRectSpace ||
-//                                    dataSet.get(dataSet.size() - 1).getStart().x + mSliding + mRectSpace + mRectWidth < mWidth) {
-//                                return true;
-//                            }
-//                            for (int i = 0; i < dataSet.size(); i++) {
-//                                PointF start = dataSet.get(i).getStart();
-//                                start.x += mSliding;
-//                            }
-//                            invalidate();
-//                        }
-//                    }
-//                    break;
-//                case MotionEvent.ACTION_UP:
-//                    if (!isMoving) {
-//                        PointF pointF = new PointF(event.getX(), event.getY());
-//                        mSelected = indexWhere(pointF);
-//                        invalidate();
-//                    }
-//                    isMoving = false;
-//                    mSliding = 0;
-//                    break;
-//            }
-//        }
-//        return true;
-//    }
-
-    private int indexWhere(float mSliding) {
-        if (Math.abs(mSliding) > mTouchSlop) {
-            for (int i = 0; i < dataSet.size(); i++) {
-                RoundHistogram roundHistogram = dataSet.get(i);
-                PointF start = roundHistogram.getStart();
-                float dis = start.x + mSliding;
-                if (Math.abs(dis) <= roundHistogram.getWidth() / 2) {
-                    return i;
-                }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (dataSet.size() > 0) {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    mLastX = event.getX();
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    if (ratio == 1) {
+                        float moveX = event.getX();
+                        mSliding = moveX - mLastX;
+                        if (Math.abs(mSliding) > mTouchSlop) {
+                            isMoving = true;
+                            mLastX = moveX;
+                            if (dataSet.get(0).getStart().x + mSliding > dataSet.get(0).getSpace() ||
+                                    dataSet.get(dataSet.size() - 1).getStart().x + mSliding + dataSet.get(dataSet.size() - 1).getSpace() + dataSet.get(dataSet.size() - 1).getWidth() < mWidth) {
+                                return true;
+                            }
+                            for (int i = 0; i < dataSet.size(); i++) {
+                                PointF start = dataSet.get(i).getStart();
+                                start.x += mSliding;
+                            }
+                            invalidate();
+                        }
+                    }
+                    break;
+                case MotionEvent.ACTION_UP:
+                    if (!isMoving) {
+                        PointF pointF = new PointF(event.getX(), event.getY());
+                        mSelected = clickWhere(pointF);
+                        invalidate();
+                    }
+                    isMoving = false;
+                    mSliding = 0;
+                    break;
             }
         }
-        return -1;
+        return true;
     }
 
-    private int indexWhere(PointF pointF) {
+    private int clickWhere(PointF pointF) {
         for (int i = 0; i < dataSet.size(); i++) {
             RoundHistogram roundHistogram = dataSet.get(i);
             PointF start = roundHistogram.getStart();

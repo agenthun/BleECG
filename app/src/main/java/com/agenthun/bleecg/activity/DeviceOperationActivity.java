@@ -67,6 +67,7 @@ public class DeviceOperationActivity extends AppCompatActivity {
 
     private boolean isShow = false;
     private boolean mRecord = false;
+    private boolean isLastBeating = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -181,6 +182,10 @@ public class DeviceOperationActivity extends AppCompatActivity {
         }
 
         if (!heartRateQueue.isEmpty()) {
+            if (isLastBeating) {
+                isLastBeating = false;
+                textCurrentHeartRate.setBeating(true);
+            }
             int heartRate = (heartRateQueue.poll() & 0xff);
             textCurrentHeartRate.setText(Integer.toString(heartRate));
             if (isRecord()) {
@@ -216,6 +221,11 @@ public class DeviceOperationActivity extends AppCompatActivity {
                         }
                     }, 30000);
                 }
+            }
+        } else {
+            if (!isLastBeating) {
+                isLastBeating = true;
+                textCurrentHeartRate.setBeating(false);
             }
         }
 
@@ -390,6 +400,10 @@ public class DeviceOperationActivity extends AppCompatActivity {
             try {
                 while (inputStream.read(byteData) != -1) {
                     socketPackageReceived.packageExtraReceive(socketPackageReceived, byteData, rawWaveQueue, heartRateQueue);
+                }
+                if (!heartRateQueue.isEmpty()) {
+                    isLastBeating = false;
+                    textCurrentHeartRate.setBeating(true);
                 }
                 inputStream.close();
             } catch (IOException e) {

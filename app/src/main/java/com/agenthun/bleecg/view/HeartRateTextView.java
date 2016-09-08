@@ -27,6 +27,7 @@ public class HeartRateTextView extends TextView {
     private int wavelet;
     private int mWidth;
     private int mHeight;
+    private boolean isBeating;
 
     private Paint mPaint;
     private RadialGradient mRadialGradient;
@@ -58,11 +59,13 @@ public class HeartRateTextView extends TextView {
         super.onDraw(canvas);
         canvas.drawCircle(mWidth / 2, mHeight / 2, radius + wavelet, mPaint);
 
-        if (++wavelet > MAX_RADIUS) {
-            wavelet = -radius;
-        }
+        if (isBeating) {
+            if (++wavelet > MAX_RADIUS) {
+                wavelet = -radius;
+            }
 
-        postInvalidateDelayed(5);
+            postInvalidateDelayed(5);
+        }
     }
 
     @Override
@@ -82,5 +85,13 @@ public class HeartRateTextView extends TextView {
                 ContextCompat.getColor(mContext, R.color.gray_a_50),
                 Shader.TileMode.REPEAT);
         mPaint.setShader(mRadialGradient);
+    }
+
+    public boolean isBeating() {
+        return isBeating;
+    }
+
+    public void setBeating(boolean beating) {
+        isBeating = beating;
     }
 }

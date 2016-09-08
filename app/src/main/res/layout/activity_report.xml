@@ -65,7 +65,7 @@
                                         android:paddingBottom="6dp"
                                         android:paddingTop="6dp" />
                                 </FrameLayout>-->
-                <com.agenthun.bleecg.view.HistogramView
+                <com.agenthun.bleecg.view.HistogramViewX
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
@@ -90,6 +90,19 @@
             </FrameLayout>
 
 
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:text="平均心率为 87.6 次/分"
+                android:textSize="16sp" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="属于正常范围 (60~100次/分)"
+                android:textSize="16sp" />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </android.support.design.widget.CoordinatorLayout>

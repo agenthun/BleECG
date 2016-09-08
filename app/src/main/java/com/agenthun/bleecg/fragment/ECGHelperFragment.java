@@ -104,8 +104,10 @@ public class ECGHelperFragment extends Fragment {
     @OnClick(R.id.replay_page)
     public void onReplayBtnClick() {
         revealFragmentContainer(replayView, replayContainer);
+        //初始化波形显示界面
         clearWaveView();
         textCurrentHeartRate.setText("60");
+        textCurrentHeartRate.setBeating(true);
 
         byte[] buffer = DataLogUtils.FileToBytes();
         final String[] dataStr = new String(buffer).split("\n");
@@ -123,6 +125,11 @@ public class ECGHelperFragment extends Fragment {
                     handler.sendMessage(msg);
 
                     dataIndex++;
+                } else if (dataIndex == dataStr.length) {
+                    if (isReplay) {
+                        isReplay = false;
+                        textCurrentHeartRate.setBeating(false);
+                    }
                 }
             }
         }, 1500, 10);
