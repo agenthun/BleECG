@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <com.agenthun.bleecg.view.RoundHistogram
+        android:id="@+id/histogram"
+        android:layout_width="10dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/histogram_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_double"
+        android:text="12"
+        android:textColor="?android:textColorPrimary"
+        android:textSize="16sp" />
+
+</LinearLayout>

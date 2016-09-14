@@ -49,6 +49,10 @@
             android:name=".activity.ReportActivity"
             android:label="@string/title_activity_report"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ReportActivityX"
+            android:label="@string/title_activity_report"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
