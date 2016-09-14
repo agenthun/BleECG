@@ -44,6 +44,9 @@ public class ReportActivityX extends AppCompatActivity {
         new LinearSnapHelper().attachToRecyclerView(mRecyclerView);
 
         List<String> list = new ArrayList<>();
+        list.add("0");
+        list.add("0");
+        list.add("0");
         list.add("16");
         list.add("12");
         list.add("18");
@@ -58,6 +61,9 @@ public class ReportActivityX extends AppCompatActivity {
         list.add("19");
         list.add("14");
         list.add("17");
+        list.add("0");
+        list.add("0");
+        list.add("0");
         HistogramAdapter histogramAdapter = new HistogramAdapter(list);
         mRecyclerView.setAdapter(histogramAdapter);
     }

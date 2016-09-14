@@ -40,27 +40,27 @@
 
             <FrameLayout
                 android:id="@+id/goal_activity_trends_arrow_area"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
                     android:layout_gravity="bottom"
-                    android:background="#ffeeeeee" />
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_gravity="bottom|center"
-                    android:layout_marginBottom="@dimen/spacing_double"
-                    android:src="@drawable/circle_shape" />
+                    android:background="#ffcccccc" />
 
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="8dp"
                     android:layout_gravity="bottom|center"
                     android:src="@drawable/common_chart_handler_info_indicator01" />
+
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="bottom|center"
+                    android:layout_marginBottom="12dp"
+                    android:src="@drawable/circle_shape" />
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/recyclerView"
@@ -71,14 +71,30 @@
             <android.support.v7.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="56dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/spacing_double"
+                android:text="2016-09-12"
+                android:textSize="14sp" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/spacing_double"
                 android:text="平均心率为 87.6 次/分"
                 android:textSize="16sp" />
 
             <android.support.v7.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/spacing_middle"
+                android:text="累计平均心率为 87.6 次/分"
+                android:textSize="16sp" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_double"
                 android:text="属于正常范围 (60~100次/分)"
                 android:textSize="16sp" />
         </LinearLayout>
