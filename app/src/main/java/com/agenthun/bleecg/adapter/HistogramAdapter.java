@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.agenthun.bleecg.R;
-import com.agenthun.bleecg.view.RoundHistogram;
+import com.agenthun.bleecg.view.RoundHistogramView;
 
 import java.util.List;
 
@@ -45,12 +45,12 @@ public class HistogramAdapter extends RecyclerView.Adapter<HistogramAdapter.View
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private RoundHistogram histogram;
+        private RoundHistogramView histogram;
         private AppCompatTextView value;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            histogram = (RoundHistogram) itemView.findViewById(R.id.histogram);
+            histogram = (RoundHistogramView) itemView.findViewById(R.id.histogram);
             value = (AppCompatTextView) itemView.findViewById(R.id.histogram_value);
         }
     }

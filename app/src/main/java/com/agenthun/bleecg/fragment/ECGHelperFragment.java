@@ -31,7 +31,6 @@ import android.widget.FrameLayout;
 
 import com.agenthun.bleecg.R;
 import com.agenthun.bleecg.activity.ReportActivity;
-import com.agenthun.bleecg.activity.ReportActivityX;
 import com.agenthun.bleecg.activity.TipsActivity;
 import com.agenthun.bleecg.utils.ApiLevelHelper;
 import com.agenthun.bleecg.utils.DataLogUtils;
@@ -162,7 +161,7 @@ public class ECGHelperFragment extends Fragment {
 
     @OnClick(R.id.card_report)
     public void onReportBtnClick() {
-        Intent intent = new Intent(getContext(), ReportActivityX.class);
+        Intent intent = new Intent(getContext(), ReportActivity.class);
         startActivity(intent);
     }
 

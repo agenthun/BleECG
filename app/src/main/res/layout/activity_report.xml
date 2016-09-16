@@ -39,68 +39,62 @@
             android:orientation="vertical">
 
             <FrameLayout
-                android:id="@+id/goal_activity_trends_period_chart_layout"
+                android:id="@+id/goal_activity_trends_arrow_area"
                 android:layout_width="match_parent"
-                android:layout_height="256dp">
+                android:layout_height="wrap_content">
 
-                <!--                <FrameLayout
-                                    android:id="@+id/goal_activity_trends_period_spinner_layout"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="45dp"
-                                    android:background="@drawable/goal_activity_ripple_spinner_bg"
-                                    android:clickable="true"
-                                    android:focusable="true"
-                                    android:nextFocusDown="@id/goal_activity_trends_period_chart_layout"
-                                    android:paddingEnd="8dp"
-                                    android:paddingStart="16dp"
-                                    android:paddingTop="7dp"
-                                    android:soundEffectsEnabled="false">
-
-                                    <Spinner
-                                        android:id="@+id/goal_activity_trends_period_spinner"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="37dp"
-                                        android:layout_gravity="start|center|top"
-                                        android:background="@drawable/home_profile_spinner_background"
-                                        android:paddingBottom="6dp"
-                                        android:paddingTop="6dp" />
-                                </FrameLayout>-->
-                <com.agenthun.bleecg.view.HistogramViewX
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-                <FrameLayout
-                    android:id="@+id/goal_activity_trends_arrow_area"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="56dp"
                     android:layout_gravity="bottom"
-                    android:background="@color/gray_50">
+                    android:background="#ffcccccc" />
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_gravity="bottom"
-                        android:background="@color/gray_200" />
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="8dp"
+                    android:layout_gravity="bottom|center"
+                    android:src="@drawable/common_chart_handler_info_indicator01" />
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp"
-                        android:src="@drawable/common_chart_handler_info_indicator01" />
-                </FrameLayout>
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_gravity="bottom|center"
+                    android:layout_marginBottom="12dp"
+                    android:src="@drawable/circle_shape" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
             </FrameLayout>
-
 
             <android.support.v7.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="56dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/spacing_double"
+                android:text="2016-09-12"
+                android:textSize="14sp" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/spacing_double"
                 android:text="平均心率为 87.6 次/分"
                 android:textSize="16sp" />
 
             <android.support.v7.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="@dimen/spacing_middle"
+                android:text="累计平均心率为 87.6 次/分"
+                android:textSize="16sp" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_double"
                 android:text="属于正常范围 (60~100次/分)"
                 android:textSize="16sp" />
         </LinearLayout>

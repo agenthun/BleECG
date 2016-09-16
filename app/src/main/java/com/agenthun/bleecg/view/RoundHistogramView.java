@@ -17,7 +17,7 @@ import com.agenthun.bleecg.R;
  * @authors agenthun
  * @date 16/9/11 22:04.
  */
-public class RoundHistogram extends View {
+public class RoundHistogramView extends View {
     private float value;
     private float MAX_VALUE = 20f;
     private float mRectHeight;
@@ -31,15 +31,15 @@ public class RoundHistogram extends View {
     private LinearGradient mLinearGradient;
     private Context mContext;
 
-    public RoundHistogram(Context context) {
+    public RoundHistogramView(Context context) {
         this(context, null);
     }
 
-    public RoundHistogram(Context context, AttributeSet attrs) {
+    public RoundHistogramView(Context context, AttributeSet attrs) {
         this(context, attrs, android.R.attr.textViewStyle);
     }
 
-    public RoundHistogram(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RoundHistogramView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initView(context);
     }

@@ -1,16 +1,25 @@
 package com.agenthun.bleecg.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSnapHelper;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 
 import com.agenthun.bleecg.R;
+import com.agenthun.bleecg.adapter.HistogramAdapter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReportActivity extends AppCompatActivity {
 
     private static final String TAG = "ReportActivity";
+
+    private RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +36,35 @@ public class ReportActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        mRecyclerView.setOnFlingListener(null);
+        new LinearSnapHelper().attachToRecyclerView(mRecyclerView);
+
+        List<String> list = new ArrayList<>();
+        list.add("0");
+        list.add("0");
+        list.add("0");
+        list.add("16");
+        list.add("12");
+        list.add("18");
+        list.add("10");
+        list.add("11");
+        list.add("16");
+        list.add("19");
+        list.add("8");
+        list.add("13");
+        list.add("11");
+        list.add("16");
+        list.add("19");
+        list.add("14");
+        list.add("17");
+        list.add("0");
+        list.add("0");
+        list.add("0");
+        HistogramAdapter histogramAdapter = new HistogramAdapter(list);
+        mRecyclerView.setAdapter(histogramAdapter);
     }
 
     @Override
