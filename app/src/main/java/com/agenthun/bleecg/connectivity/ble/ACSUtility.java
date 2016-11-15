@@ -1,5 +1,7 @@
 package com.agenthun.bleecg.connectivity.ble;
 
+import android.Manifest;
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
@@ -7,14 +9,18 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ACSUtility extends Object {
@@ -71,6 +77,9 @@ public class ACSUtility extends Object {
             Log.d(TAG, "error, mBtAdapter == null");
             return;
         }
+
+        //after andrioid m, must request Permission on runtime
+        getPermissions(context);
 
         //context.registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
         Intent intent = new Intent();
@@ -174,6 +183,7 @@ public class ACSUtility extends Object {
         Log.d(TAG, "start scan now");
         mBtAdapter.stopLeScan(mLeScanCallback);
         mBtAdapter.startLeScan(mLeScanCallback);
+
         //UUID []serviceUuids = {ACSUtilityService.ACS_SERVICE_UUID};
         //mBtAdapter.startLeScan(serviceUuids, mLeScanCallback);
         bScanning = true;
@@ -432,8 +442,29 @@ public class ACSUtility extends Object {
         }
     }
 
-    ;
+    private void getPermissions(Context context) {
+        List<String> permissions = new ArrayList<>();
 
+        // 蓝牙权限必须开启ACCESS_COARSE_LOCATIO或ACCESS_FINE_LOCATION权限，用户如果禁止，则每次进入都会申请
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            permissions.add(Manifest.permission.ACCESS_COARSE_LOCATION);
+        }
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            permissions.add(Manifest.permission.ACCESS_FINE_LOCATION);
+        }
+
+        // 读写外设为必须权限，用户如果禁止，则每次进入都会申请
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+        }
+        if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+
+        if (permissions.size() > 0) {
+            ActivityCompat.requestPermissions((Activity) context, permissions.toArray(new String[permissions.size()]), 127);
+        }
+    }
 
     //接口类，用于外部实现与交互
     public interface IACSUtilityCallback {
