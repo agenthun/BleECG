@@ -1,10 +1,17 @@
 package com.agenthun.bleecg.activity;
 
+import android.Manifest;
+import android.annotation.TargetApi;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
@@ -24,6 +31,9 @@ import com.agenthun.bleecg.R;
 import com.agenthun.bleecg.adapter.SectionsPagerAdapter;
 import com.agenthun.bleecg.utils.ApiLevelHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @project MainActivity
  * @authors agenthun
@@ -33,6 +43,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "MainActivity";
+    private final int SDK_PERMISSION_REQUEST = 127;
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
@@ -123,6 +134,12 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        getPersimmions();
+    }
+
+    @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -177,6 +194,45 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void getPersimmions() {
+        List<String> permissions = new ArrayList<>();
+
+        // 读写外设为必须权限，用户如果禁止，则每次进入都会申请
+        addPermission(permissions, Manifest.permission.READ_EXTERNAL_STORAGE);
+        addPermission(permissions, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+        }
+        if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        }
+
+        if (permissions.size() > 0) {
+            ActivityCompat.requestPermissions(MainActivity.this, permissions.toArray(new String[permissions.size()]), SDK_PERMISSION_REQUEST);
+        }
+    }
+
+    private boolean addPermission(List<String> permissionsList, String permission) {
+        if (ContextCompat.checkSelfPermission(MainActivity.this, permission) != PackageManager.PERMISSION_GRANTED) { // 如果应用没有获得对应权限,则添加到列表中,准备批量申请
+            if (ActivityCompat.shouldShowRequestPermissionRationale(MainActivity.this, permission)) {
+                return true;
+            } else {
+                permissionsList.add(permission);
+                return false;
+            }
+
+        } else {
+            return true;
+        }
+    }
+
+    @TargetApi(23)
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     //FABClick interface
